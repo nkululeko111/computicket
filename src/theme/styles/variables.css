@@ -1,0 +1,29 @@
+/* variables.css - Define CSS variables for colors, fonts, spacing */
+
+:root {
+  /* Colors */
+  --color-primary: #0070f3;
+  --color-secondary: #ff4081;
+  --color-accent: #e2e8f0;
+  --color-background: #f9fafb;
+  --color-text-primary: #1a202c;
+  --color-text-secondary: #718096;
+  --color-error: #e53e3e;
+  --color-success: #38a169;
+
+  /* Fonts */
+  --font-family-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-family-mono: 'Courier New', Courier, monospace;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 48px;
+
+  /* Border radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+}

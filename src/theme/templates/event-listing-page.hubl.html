@@ -1,0 +1,14 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: EventListing
+-->
+
+{% extends "./layouts/base.hubl.html" %}
+
+{% block body %}
+  {% module "eventList"
+    path="../components/modules/EventList",
+    label="Event List"
+  %}
+{% endblock body %}

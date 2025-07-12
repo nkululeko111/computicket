@@ -1,0 +1,20 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Home Page
+-->
+
+{% endblock %}
+
+
+{% extends "./layouts/base.hubl.html" %}
+
+{% block body %}
+
+  {% module
+    "homeBanner"
+    path="../components/modules/HomeBanner",
+    brandColors="{{ theme.brand_color }}",
+  %}
+
+{% endblock body %}
