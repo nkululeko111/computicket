@@ -5,14 +5,22 @@ import {
   UrlField,
 } from '@hubspot/cms-components/fields';
 
+import styles from './HomeBanner.module.css';
+
 export function Component({ fieldValues }) {
   return (
-    <header style={{ backgroundImage: `url(${fieldValues.background_image?.src})` }}>
-      <h1>{fieldValues.headline}</h1>
-      <a href={fieldValues.cta_link}>{fieldValues.cta_button}</a>
+    <header
+      className={styles.header}
+      style={{ backgroundImage: `url(${fieldValues.background_image?.src})` }}
+    >
+      <h1 className={styles.headline}>{fieldValues.headline}</h1>
+      <a className={styles.cta} href={fieldValues.cta_link}>
+        {fieldValues.cta_button}
+      </a>
     </header>
   );
 }
+
 
 export const fields = (
   <ModuleFields>

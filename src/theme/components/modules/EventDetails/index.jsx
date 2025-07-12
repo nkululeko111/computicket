@@ -3,10 +3,12 @@ import {
   TextField,
 } from '@hubspot/cms-components/fields';
 
+import styles from './EventDetails.module.css';
+
 export function Component({ fieldValues }) {
   return (
-    <article>
-      <h3>Details for Event ID: {fieldValues.event_id}</h3>
+    <article className={styles.container}>
+      <h3 className={styles.title}>Details for Event ID: {fieldValues.event_id}</h3>
       {/* Event data would be dynamically loaded */}
     </article>
   );

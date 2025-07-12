@@ -4,17 +4,12 @@
   label: Home Page
 -->
 
-{% endblock %}
-
-
 {% extends "./layouts/base.hubl.html" %}
 
 {% block body %}
 
-  {% module
-    "homeBanner"
-    path="../components/modules/HomeBanner",
-    brandColors="{{ theme.brand_color }}",
-  %}
+    
+  {% module "eventList" path="../components/modules/EventList" %}
+  {% module "bookingForm" path="../components/modules/BookingForm" %}
 
 {% endblock body %}

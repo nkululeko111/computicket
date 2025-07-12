@@ -4,12 +4,15 @@ import {
   BooleanField,
 } from '@hubspot/cms-components/fields';
 
+import styles from './BookingConfirmation.module.css';
+
+
 export function Component({ fieldValues }) {
   return (
-    <div>
-      <h2>{fieldValues.thank_you_message}</h2>
+    <div className={styles.container}>
+      <h2 className={styles.title}>{fieldValues.thank_you_message}</h2>
       {fieldValues.show_download_button && (
-        <a href="#" className="button">
+        <a href="#" className={styles.button}>
           Download Ticket
         </a>
       )}

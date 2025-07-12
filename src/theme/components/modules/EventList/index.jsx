@@ -3,12 +3,15 @@ import {
   TextField,
 } from '@hubspot/cms-components/fields';
 
+import styles from './EventList.module.css';
+
+
 export function Component({ fieldValues }) {
   return (
-    <section>
-      <h2>{fieldValues.title}</h2>
+    <section className={styles.container}>
+      <h2 className={styles.title}>{fieldValues.title}</h2>
       {/* Normally you'd map dynamic data like events here */}
-      <p>Event list goes here (from {fieldValues.event_source})</p>
+      <p className={styles.description}>Event list goes here (from {fieldValues.event_source})</p>
     </section>
   );
 }
