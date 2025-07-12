@@ -1,5 +1,6 @@
 <!--
-  templateType: layout
+  templateType: page
+  isAvailableForNewContent: false
   label: Base template
 -->
 
@@ -7,25 +8,26 @@
 <html lang="{{ html_lang }}" {{ html_lang_dir }}>
   <head>
     <meta charset="utf-8" />
-    <title>{{ page_meta.html_title or pageTitle || "Computicket Event" }}</title>
-    <meta name="description" content="{{ page_meta.meta_description }}">
+    {% if page_meta.html_title or pageTitle %}
+      <title>{{ page_meta.html_title or pageTitle }}</title>
+    {% else %}
+      <title>Computicket Event</title>
+    {% endif %}
     {% if brand_settings.primaryFavicon.src %}
       <link rel="shortcut icon" href="{{ brand_settings.primaryFavicon.src }}" />
     {% endif %}
-    
+    <meta name="description" content="{{ page_meta.meta_description }}" />
     {{ standard_header_includes }}
-    
     <link rel="stylesheet" href="{{ get_public_template_url('../../styles/global.css') }}" />
     <link rel="stylesheet" href="{{ get_public_template_url('../../styles/variables.css') }}" />
   </head>
-
   <body>
     <header>
       <h1>Computicket</h1>
       <nav>
-        <a href="/">Home</a>
-        <a href="/event-listing-page">Events</a>
-        <a href="/booking-page">Book Tickets</a>
+        <a href="../../../components/modules/HomeBanner/index.jsx">Home</a> |
+        <a href="../../components/modules/EventList/index.jsx">Events</a> |
+        <a href="../../components/modules/BookingForm/index.jsx">Book Tickets</a>
       </nav>
     </header>
 
