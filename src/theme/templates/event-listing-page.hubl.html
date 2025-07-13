@@ -1,14 +1,16 @@
 <!--
   templateType: page
   isAvailableForNewContent: true
-  label: EventListing
+  label: Event Details Page
 -->
-
-{% extends "./layouts/base.hubl.html" %}
+{% extends "./layouts/event-layout.hubl.html" %}
 
 {% block body %}
-  {% module "eventList"
-    path="../components/modules/EventList",
-    label="Event List"
-  %}
-{% endblock body %}
+  {% dnd_area "event_details_content" label="Event Details Content Area" %}
+    {% dnd_section %}
+      {% dnd_column width=12 %}
+        {% module "eventDetails" path="../components/modules/EventDetails" %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+  {% end_dnd_area %}
+{% endblock %}

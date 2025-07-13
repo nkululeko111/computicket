@@ -7,9 +7,12 @@
 {% extends "./layouts/base.hubl.html" %}
 
 {% block body %}
-
-    
-  {% module "eventList" path="../components/modules/EventList" %}
-  {% module "bookingForm" path="../components/modules/BookingForm" %}
-
-{% endblock body %}
+  {% dnd_area "main_content" label="Main Content Area" %}
+    {% dnd_section %}
+      {% dnd_column width=12 %}
+        <h1>Welcome to Computicket</h1>
+        <p>This is your home page content</p>
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+  {% end_dnd_area %}
+{% endblock %}

@@ -3,8 +3,20 @@
   isAvailableForNewContent: false
   label: Event Layout
 -->
+
 {% extends "./base.hubl.html" %}
 
 {% block body %}
-  {# Content will be inserted by child templates #}
-{% endblock body %}
+  {% dnd_area "event_content_area" label="Event Content Area" %}
+    {% dnd_section %}
+      {% dnd_column width=12 %}
+        <!-- Child templates will inject content here -->
+        {% widget_container "main_content" %}
+          {% block event_content %}
+            {# This block can be overridden in event templates #}
+          {% endblock %}
+        {% end_widget_container %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+  {% end_dnd_area %}
+{% endblock %}
