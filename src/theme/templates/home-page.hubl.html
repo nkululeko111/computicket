@@ -10,8 +10,7 @@
   {% dnd_area "main_content" label="Main Content Area" %}
     {% dnd_section %}
       {% dnd_column width=12 %}
-        <h1>Welcome to Computicket</h1>
-        <p>This is your home page content</p>
+        {% dnd_module path="@hubspot/rich_text", label="Welcome Text", html="<h1>Welcome to Computicket</h1><p>This is your home page content</p>" %}
       {% end_dnd_column %}
     {% end_dnd_section %}
   {% end_dnd_area %}
