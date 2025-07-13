@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ content.html_title || "Computicket.com Clone" }}</title>
 
-  {{ require_css(get_asset_url('styles/computicket.css')) }}
+  {{ require_css(get_asset_url('../../styles/computicket.css')) }}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
   {{ standard_header_includes }}
@@ -18,7 +18,7 @@
     <div class="ct-container">
       <div class="ct-header-content">
         <a href="/" class="ct-logo">
-          <img src="{{ get_asset_url('assets/computicket-logo.png') }}" alt="Computicket Logo" class="ct-logo-img" />
+          <img src="{{ get_asset_url('../../assets/computicket-logo.png') }}" alt="Computicket Logo" class="ct-logo-img" />
         </a>
         <nav class="ct-main-nav">
           <a href="/vouchers"><i class="fa fa-shopping-bag"></i></a>
