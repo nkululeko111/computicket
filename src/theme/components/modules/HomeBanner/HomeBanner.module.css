@@ -1,52 +1,27 @@
-.bannerSection {
-  padding: 60px 20px;
-  background-color: #f4f4f4;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
+.header {
+  background-size: cover;
+  background-position: center;
+  padding: 80px 20px;
+  color: white;
   text-align: center;
 }
 
-.heading {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: #222;
+.headline {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
-.experienceGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.option {
-  position: relative;
-  width: 200px;
-  height: 140px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 10px;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  transition: transform 0.3s ease;
-}
-
-.option:hover {
-  transform: scale(1.05);
-}
-
-.button {
-  background-color: #fff;
-  color: #000;
-  font-weight: bold;
-  padding: 8px 14px;
-  border-radius: 6px;
-  margin-bottom: 10px;
+.cta {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 12px 24px;
   border: none;
-  cursor: pointer;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta:hover {
+  background-color: var(--primary-color-dark);
 }
