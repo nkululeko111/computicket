@@ -1,17 +1,14 @@
+
 <!--
   templateType: page
   isAvailableForNewContent: true
-  label: Confirmation Page
+  label: confirmation-page
 -->
 
 {% extends "./layouts/base.hubl.html" %}
 
 {% block body %}
-  {% dnd_area "confirmation_content_area" label="Confirmation Content Area" %}
-    {% dnd_section %}
-      {% dnd_column width=12 %}
-        {% module "bookingConfirmation" path="../components/modules/BookingConfirmation" %}
-      {% end_dnd_column %}
-    {% end_dnd_section %}
-  {% end_dnd_area %}
-{% endblock %}
+
+  {% module "bookingConfirmation" path="../components/modules/BookingConfirmation" %}
+
+{% endblock body %}
