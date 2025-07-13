@@ -1,3 +1,12 @@
 {
-  "label": "computicket"
+  "label": "Computicket Theme",
+  "screenshot": "./assets/Computicket.png",
+  "supported_page_templates": ["templates/home-page.hubl.html", "templates/event-listing-page.hubl.html"],
+  "global_partial": "",
+  "css_assets": [],
+  "js_assets": [],
+  "layouts": {
+    "base": "templates/layouts/base.hubl.html",
+    "event-layout": "templates/layouts/event-layout.hubl.html"
+  }
 }
