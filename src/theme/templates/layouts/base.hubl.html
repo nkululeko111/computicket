@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,72 +35,72 @@
   <!-- Main Body Block -->
   <main>
     {% block body %}
-      <!-- Experience Selector -->
+    <!-- Experience Selector -->
     <section class="ct-experience-selector">
-  <div class="ct-container">
-    <div class="ct-text-center">
-      <h2>What experience are you looking for?</h2>
-      <div class="ct-experience-grid">
+      <div class="ct-container">
+        <div class="ct-text-center">
+          <h2>What experience are you looking for?</h2>
+          <div class="ct-experience-grid">
 
             <a href="/event" class="ct-experience-option" style="background-image: url('{{ get_asset_url('../../assets/images/events.jpg') }}');">
-                <button class="ct-btn ct-btn-primary">Events</button>
+              <button class="ct-btn ct-btn-primary">Events</button>
             </a>
 
             <a href="/booking" class="ct-experience-option" style="background-image: url('{{ get_asset_url('../../assets/images/buses.jpg') }}');">
-                <button class="ct-btn ct-btn-primary">Buses</button>
+              <button class="ct-btn ct-btn-primary">Buses</button>
             </a>
 
             <a href="/booking" class="ct-experience-option" style="background-image: url('{{ get_asset_url('../../assets/images/plane.jpg') }}');">
-                <button class="ct-btn ct-btn-primary">Flights</button>
+              <button class="ct-btn ct-btn-primary">Flights</button>
             </a>
 
             <a href="/vouchers" class="ct-experience-option" style="background-image: url('{{ get_asset_url('../../assets/images/voucher.jpg') }}');">
-                <button class="ct-btn ct-btn-primary">Vouchers</button>
+              <button class="ct-btn ct-btn-primary">Vouchers</button>
             </a>
 
             <a href="/stay" class="ct-experience-option" style="background-image: url('{{ get_asset_url('../../assets/images/hotel.jpg') }}');">
-                <button class="ct-btn ct-btn-primary">Stay</button>
+              <button class="ct-btn ct-btn-primary">Stay</button>
             </a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-      <!-- Featured Events -->
-      <section class="ct-featured-events">
-        <div class="ct-container">
-          <div class="ct-text-center ct-section-header">
-            <h2>Featured Events</h2>
-            <p>Don't miss out on these incredible experiences happening across South Africa</p>
-          </div>
-          <div class="ct-events-grid" id="eventsGrid">
-            <!-- Future dynamic events -->
-          </div>
-          <div class="ct-text-center ct-load-more">
-            <button class="ct-btn ct-btn-secondary">View All Events</button>
-          </div>
+    <!-- Featured Events -->
+    <section class="ct-featured-events">
+      <div class="ct-container">
+        <div class="ct-text-center ct-section-header">
+          <h2>Featured Events</h2>
+          <p>Don't miss out on these incredible experiences happening across South Africa</p>
         </div>
-      </section>
+        <div class="ct-events-grid" id="eventsGrid">
+          <!-- Future dynamic events -->
+        </div>
+        <div class="ct-text-center ct-load-more">
+          <button class="ct-btn ct-btn-secondary">View All Events</button>
+        </div>
+      </div>
+    </section>
 
-      <!-- Newsletter -->
-      <section class="ct-newsletter">
-        <div class="ct-container">
-          <div class="ct-text-center">
-            <i class="fas fa-envelope ct-newsletter-icon"></i>
-            <h2>GET THE LATEST EVENT INFO</h2>
-            <p>Sign up to stay updated on the latest events, offers, and more!</p>
-            <form class="ct-newsletter-form" id="newsletterForm">
-              <button type="submit" class="ct-btn ct-btn-white">JOIN NOW</button>
-            </form>
-          </div>
+    <!-- Newsletter -->
+    <section class="ct-newsletter">
+      <div class="ct-container">
+        <div class="ct-text-center">
+          <i class="fas fa-envelope ct-newsletter-icon"></i>
+          <h2>GET THE LATEST EVENT INFO</h2>
+          <p>Sign up to stay updated on the latest events, offers, and more!</p>
+          <form class="ct-newsletter-form" id="newsletterForm">
+            <button type="submit" class="ct-btn ct-btn-white">JOIN NOW</button>
+          </form>
         </div>
-      </section>
+      </div>
+    </section>
     {% endblock %}
   </main>
 
   <!-- Footer -->
   {% block footer %}
-  <<footer class="ct-footer">
+  <footer class="ct-footer">
     <div class="ct-container">
       <div class="ct-footer-grid">
         <div class="ct-footer-col">
@@ -110,7 +108,6 @@
             <i class="fas fa-ticket-alt"></i>
             <span> Computicket</span>
           </div>
-        
           <div class="ct-contact-info">
             <div class="ct-contact-item">
               <i class="fas fa-phone"></i>
@@ -122,8 +119,6 @@
             </div>
           </div>
         </div>
-
-        
 
         <div class="ct-footer-col">
           <h3>Visit Us</h3>
@@ -157,13 +152,3 @@
   {{ standard_footer_includes }}
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
