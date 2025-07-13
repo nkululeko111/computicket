@@ -1,7 +1,7 @@
 <!--
   templateType: page
-  isAvailableForNewContent: true
-  label: Computicket Base Template
+  isAvailableForNewContent: false
+  label: Computicket Base Layout
 -->
 
 <!DOCTYPE html>
@@ -11,71 +11,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ content.html_title || "Computicket.com Clone - Ticketing Platform" }}</title>
 
-  <!-- HubSpot CSS Asset Includes -->
   <link rel="stylesheet" href="{{ get_public_template_url('../../styles/computicket.css') }}">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
   {{ standard_header_includes }}
 </head>
 <body>
 
   <!-- Header -->
+  {% block header %}
   <header class="ct-header">
     <div class="ct-container">
       <div class="ct-header-content">
         <a href="/" class="ct-logo">
-        <span>
-            <img src="{{ get_asset_url('../../assets/computicket-logo.png') }}" alt="Computicket Logo" class="ct-logo-img">
-        </span>
+          <img src="{{ get_asset_url('../../assets/computicket-logo.png') }}" alt="Computicket Logo" class="ct-logo-img" />
         </a>
-
-
         <nav class="ct-main-nav">
           <a href="/vouchers"><i class="fa fa-shopping-bag"></i></a>
           <a href="/stay"><i class="fas fa-user"></i> Login</a>
         </nav>
-
         <button class="ct-mobile-menu" id="mobileMenuBtn">
           <i class="fas fa-bars"></i>
         </button>
       </div>
     </div>
   </header>
-
+  {% endblock %}
+  
   <!-- Main Body Block -->
   <main>
     {% block body %}
       <!-- Experience Selector -->
-      <section class="ct-experience-selector">
-        <div class="ct-container">
-          <div class="ct-text-center">
-            <h2>What experience are you looking for?</h2>
-            <div class="ct-experience-grid">
-              <div class="ct-experience-option" data-experience="events">
-                <i class="fas fa-calendar-alt"></i>
-                <span>Events</span>
-              </div>
-              <div class="ct-experience-option" data-experience="buses">
-                <i class="fas fa-bus"></i>
-                <span>Buses</span>
-              </div>
-              <div class="ct-experience-option" data-experience="flights">
-                <i class="fas fa-plane"></i>
-                <span>Flights</span>
-              </div>
-              <div class="ct-experience-option" data-experience="vouchers">
-                <i class="fas fa-gift"></i>
-                <span>Vouchers</span>
-              </div>
-              <div class="ct-experience-option" data-experience="stay">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Stay</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <section class="ct-experience-selector">
+  <div class="ct-container">
+    <div class="ct-text-center">
+      <h2>What experience are you looking for?</h2>
+      <div class="ct-experience-grid">
+
+            <a href="/event" class="ct-experience-option" style="background-image: url('{{ get_asset_url('../../assets/images/events.jpg') }}');">
+                <button class="ct-btn ct-btn-primary">Events</button>
+            </a>
+
+            <a href="/booking" class="ct-experience-option" style="background-image: url('{{ get_asset_url('../../assets/images/buses.jpg') }}');">
+                <button class="ct-btn ct-btn-primary">Buses</button>
+            </a>
+
+            <a href="/booking" class="ct-experience-option" style="background-image: url('{{ get_asset_url('../../assets/images/plane.jpg') }}');">
+                <button class="ct-btn ct-btn-primary">Flights</button>
+            </a>
+
+            <a href="/vouchers" class="ct-experience-option" style="background-image: url('{{ get_asset_url('../../assets/images/voucher.jpg') }}');">
+                <button class="ct-btn ct-btn-primary">Vouchers</button>
+            </a>
+
+            <a href="/stay" class="ct-experience-option" style="background-image: url('{{ get_asset_url('../../assets/images/hotel.jpg') }}');">
+                <button class="ct-btn ct-btn-primary">Stay</button>
+            </a>
+      </div>
+    </div>
+  </div>
+</section>
 
       <!-- Featured Events -->
       <section class="ct-featured-events">
@@ -110,7 +105,8 @@
   </main>
 
   <!-- Footer -->
-  <footer class="ct-footer">
+  {% block footer %}
+  <<footer class="ct-footer">
     <div class="ct-container">
       <div class="ct-footer-grid">
         <div class="ct-footer-col">
@@ -160,7 +156,18 @@
       </div>
     </div>
   </footer>
+  {% endblock %}
 
   {{ standard_footer_includes }}
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+

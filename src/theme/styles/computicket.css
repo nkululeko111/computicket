@@ -61,12 +61,17 @@ body {
 }
 
 .ct-btn-primary {
-    background-color: var(--ct-red);
+   background-color: transparent;
+    border: 1px solid silver;
     color: white;
-}
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
+
+    }
+    
 
 .ct-btn-primary:hover {
-    background-color: var(--ct-red-dark);
+    background-color: none;
     transform: translateY(-1px);
 }
 
@@ -194,24 +199,8 @@ body {
     text-align: center;
 }
 
-.ct-experience-option:hover {
-    box-shadow: var(--ct-shadow-lg);
-    border-color: var(--ct-red);
-    transform: translateY(-2px);
-}
 
-.ct-experience-option i {
-    font-size: 3rem;
-    margin-bottom: 0.75rem;
-    display: block;
-}
 
-.ct-experience-option[data-experience="events"] i { color: var(--ct-red); }
-.ct-experience-option[data-experience="buses"] i { color: var(--ct-blue); }
-.ct-experience-option[data-experience="flights"] i { color: var(--ct-indigo); }
-.ct-experience-option[data-experience="vouchers"] i { color: var(--ct-green); }
-.ct-experience-option[data-experience="stay"] i { color: var(--ct-purple); }
-.ct-experience-option[data-experience="all"] i { color: var(--ct-orange); }
 
 .ct-experience-option span {
     color: var(--ct-gray-900);
@@ -567,8 +556,35 @@ body {
 }
 
 .ct-logo-img {
-  height: 40px;
+  height: 58px;
   width: auto;
   display: block;
   object-fit: contain;
+}
+
+
+
+
+
+
+
+
+
+.ct-experience-option {
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 1rem;
+  color: white;
+  text-decoration: none;
+  box-shadow: var(--ct-shadow);
+  transition: transform 0.3s ease;
+}
+
+.ct-experience-option:hover {
+  transform: translateY(-4px);
 }
