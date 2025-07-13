@@ -1,40 +1,36 @@
-import {
-  ModuleFields,
-  ImageField,
-  TextField,
-  UrlField,
-} from '@hubspot/cms-components/fields';
-
 import styles from './HomeBanner.module.css';
+import { ModuleFields } from '@hubspot/cms-components/fields';
 
-export function Component({ fieldValues }) {
+export function Component() {
   return (
-    <header
-      className={styles.header}
-      style={{ backgroundImage: `url(${fieldValues.background_image?.src})` }}
-    >
-      <h1 className={styles.headline}>{fieldValues.headline}</h1>
-      <a className={styles.cta} href={fieldValues.cta_link}>
-        {fieldValues.cta_button}
-      </a>
-    </header>
+    <section className={styles.bannerSection}>
+      <div className={styles.container}>
+        <h2 className={styles.heading}>What experience are you looking for?</h2>
+        <div className={styles.experienceGrid}>
+          <a href="/event" className={styles.option} style={{ backgroundImage: `url(${require('../../../assets/images/events.jpg')})` }}>
+            <button className={styles.button}>Events</button>
+          </a>
+          <a href="/booking" className={styles.option} style={{ backgroundImage: `url(${require('../../../assets/images/buses.jpg')})` }}>
+            <button className={styles.button}>Buses</button>
+          </a>
+          <a href="/booking" className={styles.option} style={{ backgroundImage: `url(${require('../../../assets/images/plane.jpg')})` }}>
+            <button className={styles.button}>Flights</button>
+          </a>
+          <a href="/vouchers" className={styles.option} style={{ backgroundImage: `url(${require('../../../assets/images/voucher.jpg')})` }}>
+            <button className={styles.button}>Vouchers</button>
+          </a>
+          <a href="/stay" className={styles.option} style={{ backgroundImage: `url(${require('../../../assets/images/hotel.jpg')})` }}>
+            <button className={styles.button}>Stay</button>
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }
 
 
-export const fields = (
-  <ModuleFields>
-    <ImageField name="background_image" label="Background Image" />
-    <TextField
-      name="headline"
-      label="Headline"
-      default="Discover Events Near You"
-    />
-    <TextField name="cta_button" label="CTA Label" default="Browse Events" />
-    <UrlField name="cta_link" label="CTA Link" />
-  </ModuleFields>
-);
+export const fields = <ModuleFields />;
 
 export const meta = {
-  label: 'HomeBanner',
+  label: 'Home Banner',
 };
