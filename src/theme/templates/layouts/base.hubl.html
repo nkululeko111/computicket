@@ -1,44 +1,169 @@
 <!--
   templateType: page
-  isAvailableForNewContent: false
-  label: Base template
+  isAvailableForNewContent: true
+  label: Computicket Base Template
 -->
 
 <!DOCTYPE html>
-<html lang="{{ html_lang }}" {{ html_lang_dir }}>
-  <head>
-    <meta charset="utf-8" />
-    {% if page_meta.html_title or pageTitle %}
-      <title>{{ page_meta.html_title or pageTitle }}</title>
-    {% else %}
-      <title>Computicket Event</title>
-    {% endif %}
-    {% if brand_settings.primaryFavicon.src %}
-      <link rel="shortcut icon" href="{{ brand_settings.primaryFavicon.src }}" />
-    {% endif %}
-    <meta name="description" content="{{ page_meta.meta_description }}" />
-    {{ standard_header_includes }}
-    <link rel="stylesheet" href="{{ get_public_template_url('../../styles/global.css') }}" />
-    <link rel="stylesheet" href="{{ get_public_template_url('../../styles/variables.css') }}" />
-  </head>
-  <body>
-    <header>
-      <h1>Computicket</h1>
-      <nav>
-        <a href="../../../components/modules/HomeBanner/index.jsx">Home</a> |
-        <a href="../../components/modules/EventList/index.jsx">Events</a> |
-        <a href="../../components/modules/BookingForm/index.jsx">Book Tickets</a>
-      </nav>
-    </header>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ content.html_title || "Computicket.com Clone - Ticketing Platform" }}</title>
 
-    <main class="event-layout">
-      {% block body %}{% endblock %}
-    </main>
+  <!-- HubSpot CSS Asset Includes -->
+  <link rel="stylesheet" href="{{ get_public_template_url('../../styles/computicket.css') }}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
-    <footer>
-      <p>© {{ local_dt|datetimeformat('%Y') }} Computicket. All rights reserved.</p>
-    </footer>
+  {{ standard_header_includes }}
+</head>
+<body>
 
-    {{ standard_footer_includes }}
-  </body>
+  <!-- Header -->
+  <header class="ct-header">
+    <div class="ct-container">
+      <div class="ct-header-content">
+        <a href="/" class="ct-logo">
+        <span>
+            <img src="{{ get_asset_url('../../assets/computicket-logo.png') }}" alt="Computicket Logo" class="ct-logo-img">
+        </span>
+        </a>
+
+
+        <nav class="ct-main-nav">
+          <a href="/vouchers"><i class="fa fa-shopping-bag"></i></a>
+          <a href="/stay"><i class="fas fa-user"></i> Login</a>
+        </nav>
+
+        <button class="ct-mobile-menu" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Body Block -->
+  <main>
+    {% block body %}
+      <!-- Experience Selector -->
+      <section class="ct-experience-selector">
+        <div class="ct-container">
+          <div class="ct-text-center">
+            <h2>What experience are you looking for?</h2>
+            <div class="ct-experience-grid">
+              <div class="ct-experience-option" data-experience="events">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Events</span>
+              </div>
+              <div class="ct-experience-option" data-experience="buses">
+                <i class="fas fa-bus"></i>
+                <span>Buses</span>
+              </div>
+              <div class="ct-experience-option" data-experience="flights">
+                <i class="fas fa-plane"></i>
+                <span>Flights</span>
+              </div>
+              <div class="ct-experience-option" data-experience="vouchers">
+                <i class="fas fa-gift"></i>
+                <span>Vouchers</span>
+              </div>
+              <div class="ct-experience-option" data-experience="stay">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Stay</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Events -->
+      <section class="ct-featured-events">
+        <div class="ct-container">
+          <div class="ct-text-center ct-section-header">
+            <h2>Featured Events</h2>
+            <p>Don't miss out on these incredible experiences happening across South Africa</p>
+          </div>
+          <div class="ct-events-grid" id="eventsGrid">
+            <!-- Future dynamic events -->
+          </div>
+          <div class="ct-text-center ct-load-more">
+            <button class="ct-btn ct-btn-secondary">View All Events</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="ct-newsletter">
+        <div class="ct-container">
+          <div class="ct-text-center">
+            <i class="fas fa-envelope ct-newsletter-icon"></i>
+            <h2>GET THE LATEST EVENT INFO</h2>
+            <p>Sign up to stay updated on the latest events, offers, and more!</p>
+            <form class="ct-newsletter-form" id="newsletterForm">
+              <button type="submit" class="ct-btn ct-btn-white">JOIN NOW</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    {% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="ct-footer">
+    <div class="ct-container">
+      <div class="ct-footer-grid">
+        <div class="ct-footer-col">
+          <div class="ct-footer-logo">
+            <i class="fas fa-ticket-alt"></i>
+            <span> Computicket</span>
+          </div>
+        
+          <div class="ct-contact-info">
+            <div class="ct-contact-item">
+              <i class="fas fa-phone"></i>
+              <span>086 191 5800</span>
+            </div>
+            <div class="ct-contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>info@computicket.com</span>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div class="ct-footer-col">
+          <h3>Visit Us</h3>
+          <div class="ct-address">
+            <i class="fas fa-map-marker-alt"></i>
+            <address>
+              Computicket House<br>
+              Greenacres Office Park<br>
+              Victory Park<br>
+              Johannesburg
+            </address>
+          </div>
+        </div>
+      </div>
+
+      <div class="ct-footer-bottom">
+        <div class="ct-legal-links">
+          <a href="#">Legal Terms</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Accessibility</a>
+        </div>
+        <div class="ct-copyright">
+          © {{ local_dt|datetimeformat('%Y') }} Computicket (Pty) Ltd. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="{{ get_public_template_url('scripts/main.js') }}"></script>
+
+  {{ standard_footer_includes }}
+</body>
 </html>
