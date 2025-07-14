@@ -1,20 +1,57 @@
+<!-- Mini top header with "Computicket" overlay -->
+<div class="mini-header">
+  <div class="black-overlay">Computicket</div>
+</div>
+
+<!-- Main header with logo, nav, login -->
 <header class="ct-header">
   <div class="ct-container">
     <div class="ct-header-content">
       <a href="/" class="ct-logo">
-        <span>
-          <img src="{{ get_asset_url('../../assets/computicket-logo.png') }}" alt="Computicket Logo" class="ct-logo-img">
-        </span>
+        <img src="{{ get_asset_url('../../assets/computicket-logo.png') }}" alt="Computicket Logo" class="ct-logo-img" />
       </a>
-
+      <!-- Navigation links, initially hidden -->
+      <nav class="ct-main-nav hidden-nav">
+        <a href="/event"><i class="fas fa-calendar-alt"></i> Events</a>
+        <a href="/booking"><i class="fas fa-bus"></i> Buses</a>
+        <a href="/booking"><i class="fas fa-plane"></i> Flights</a>
+        <a href="/vouchers"><i class="fas fa-gift"></i> Vouchers</a>
+        <a href="/stay"><i class="fas fa-bed"></i> Stay</a>
+      </nav>
+      <!-- Login / user icons -->
       <nav class="ct-main-nav">
         <a href="/vouchers"><i class="fa fa-shopping-bag"></i></a>
         <a href="/stay"><i class="fas fa-user"></i> Login</a>
       </nav>
-
+      <!-- Mobile menu button -->
       <button class="ct-mobile-menu" id="mobileMenuBtn">
         <i class="fas fa-bars"></i>
       </button>
     </div>
   </div>
 </header>
+
+<style>
+  /* Add this CSS to hide the nav links initially */
+  .hidden-nav {
+    display: none;
+  }
+  
+  /* Show the nav links when header has show-nav class */
+  .ct-header.show-nav .hidden-nav {
+    display: block;
+    
+  }
+</style>
+
+<script>
+  // Show navigation links after scrolling down
+  window.addEventListener('scroll', function() {
+    const mainHeader = document.querySelector('.ct-header');
+    if (window.scrollY > 70) {
+      mainHeader.classList.add('show-nav');
+    } else {
+      mainHeader.classList.remove('show-nav');
+    }
+  });
+</script>

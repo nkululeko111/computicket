@@ -162,7 +162,7 @@ body {
 /* Experience Selector */
 .ct-experience-selector {
     background: linear-gradient(135deg, var(--ct-gray-50) 0%, #EBF8FF 100%);
-    padding: 4rem 0;
+    padding: 2rem 0;
 }
 
 .ct-experience-selector h2 {
@@ -563,17 +563,10 @@ body {
 }
 
 
-
-
-
-
-
-
-
 .ct-experience-option {
   background-size: cover;
   background-position: center;
-  height: 200px;
+  height: 180px;
   border-radius: 10px;
   display: flex;
   align-items: flex-end;
@@ -588,3 +581,43 @@ body {
 .ct-experience-option:hover {
   transform: translateY(-4px);
 }
+
+
+
+
+
+.black-overlay {
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+    font-size: 15px;
+  }
+
+
+.hidden-nav {
+display: none;
+}
+
+.ct-header.show-nav .hidden-nav {
+display: block;
+}
+
+
+.ct-main-nav.hidden-nav a {
+margin-right: 1rem; 
+}
+
+
+.ct-main-nav.hidden-nav a:last-child {
+margin-right: 0;
+}
+
+
+
+
+
+
+
+
