@@ -9,32 +9,99 @@ import styles from './HomeBanner.module.css';
 
 export function Component({ fieldValues }) {
   return (
-    <header
-      className={styles.header}
-      style={{ backgroundImage: `url(${fieldValues.background_image?.src})` }}
-    >
-      <h1 className={styles.headline}>{fieldValues.headline}</h1>
-      <a className={styles.cta} href={fieldValues.cta_link}>
-        {fieldValues.cta_button}
-      </a>
-    </header>
+    <section className={styles.wrapper}>
+      <header
+        className={styles.header}
+        style={{
+          backgroundImage: `url(${fieldValues.background_image?.src})`,
+        }}
+      >
+        <h1 className={styles.headline}>{fieldValues.headline}</h1>
+        <a className={styles.cta} href={fieldValues.cta_link}>
+          {fieldValues.cta_button}
+        </a>
+      </header>
+
+      {/* Hidden Mauritius Section */}
+      <div className={styles.mauritiusSection}>
+        <h2 className={styles.subheading}>Discover Hidden Mauritius</h2>
+        <h3 className={styles.subsubheading}>
+          Skip the crowds and explore authentic island gems
+        </h3>
+
+        <div className={styles.cardGrid}>
+          {/* Card 1 */}
+          <div className={styles.card}>
+            <img
+              src="../../assets/images/ile-aux-aigrettes.jpg"
+              alt="Île aux Aigrettes"
+              className={styles.cardImg}
+            />
+            <div className={styles.cardOverlay}>
+              <a
+                href="https://maps.google.com/?q=Île+aux+Aigrettes"
+                className={styles.cardBtn}
+              >
+                <i className="fa fa-map-marker-alt" /> Île aux Aigrettes
+              </a>
+              <p className={styles.cardDesc}>
+                Pristine nature reserve with rare endemic species
+              </p>
+            </div>
+          </div>
+
+          {/* Card 2 */}
+          <div className={styles.card}>
+            <img
+              src="../../assets/images/chamarel-hotel.jpg"
+              alt="Chamarel Village"
+              className={styles.cardImg}
+            />
+            <div className={styles.cardOverlay}>
+              <a
+                href="https://maps.google.com/?q=Chamarel+Village"
+                className={styles.cardBtn}
+              >
+                <i className="fa fa-map-marker-alt" /> Chamarel Village
+              </a>
+              <p className={styles.cardDesc}>
+                Seven-colored earth and hidden rum distilleries
+              </p>
+            </div>
+          </div>
+
+          {/* Card 3 */}
+          <div className={styles.card}>
+            <img
+              src="../../assets/images/Trou-aux-Cerfs.jpg"
+              alt="Trou aux Cerfs"
+              className={styles.cardImg}
+            />
+            <div className={styles.cardOverlay}>
+              <a
+                href="https://maps.google.com/?q=Trou+aux+Cerfs"
+                className={styles.cardBtn}
+              >
+                <i className="fa fa-map-marker-alt" /> Trou aux Cerfs
+              </a>
+              <p className={styles.cardDesc}>
+                Dormant volcanic crater with panoramic views
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
-
 
 export const fields = (
   <ModuleFields>
     <ImageField name="background_image" label="Background Image" />
-    <TextField
-      name="headline"
-      label="Headline"
-      default="Discover Events Near You"
-    />
-    <TextField name="cta_button" label="CTA Label" default="Browse Events" />
     <UrlField name="cta_link" label="CTA Link" />
   </ModuleFields>
 );
 
 export const meta = {
-  label: 'HomeBanner',
+  label: 'homeBanner',
 };

@@ -98,7 +98,6 @@ export function Component({ fieldValues }) {
 
   return (
     <section className={styles.container}>
-      <h2 className={styles.title}>{fieldValues.title || 'Browse Categories'}</h2>
       <div className={styles.sliderWrapper}>
         {/* Slider */}
         <div className={styles.slider} ref={slideRef}>

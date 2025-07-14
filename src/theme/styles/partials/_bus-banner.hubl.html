@@ -1,0 +1,36 @@
+
+<link rel="stylesheet" href="../styles/variables.css">
+<section class="ct-bus-banner">
+  <div class="ct-container ct-bus-grid">
+    
+    {% module "bus_text_content"
+      path="@hubspot/rich_text",
+      label="Bus Banner Text",
+      html='
+        <div class="ct-bus-content">
+          <p class="ct-badge"><i class="fas fa-star"></i> Great price guaranteed</p>
+          <h1 class="ct-bus-headline">Find Your Perfect Bus Journey</h1>
+          <h2 class="ct-bus-subtext">
+            Book tickets with all major long-distance bus carriers at unbeatable prices.
+            From budget-friendly options to premium comfort, we\'ve got every route covered 
+            with instant booking and great deals.
+          </h2>
+          <a class="ct-button ct-button-primary" href="/buses/search">
+            <i class="fas fa-bus"></i> Search Routes <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>'
+    %}
+
+    {% module "bus_image"
+      path="@hubspot/image",
+      label="Bus Banner Image",
+      img={
+        "src": get_asset_url('../../assets/images/bus-banner.png'),
+        "alt": "Bus Banner",
+        "loading": "lazy",
+        "size_type": "auto"
+      }
+    %}
+
+  </div>
+</section>
