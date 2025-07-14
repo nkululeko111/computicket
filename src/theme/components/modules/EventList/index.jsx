@@ -47,25 +47,60 @@ const slides = [
 export function Component({ fieldValues }) {
   const [index, setIndex] = useState(0);
   const slideRef = useRef(null);
+  const intervalRef = useRef(null);
+
+  const totalSlides = slides.length;
+
+  const goToSlide = (i) => {
+    console.log(`[Manual] Navigating to slide ${i}`);
+    setIndex(i);
+  };
+
+  const goNext = () => {
+    setIndex((prev) => {
+      const next = (prev + 1) % totalSlides;
+      console.log(`[Auto] Moving from slide ${prev} → ${next}`);
+      return next;
+    });
+  };
+
+  const goPrev = () => {
+    setIndex((prev) => {
+      const next = (prev - 1 + totalSlides) % totalSlides;
+      console.log(`[Manual] Moving from slide ${prev} → ${next}`);
+      return next;
+    });
+  };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
-       console.log('Applying transform:', transformValue);
-    }, 2000);
-    return () => clearInterval(interval);
+    console.log('[Init] Starting auto-slide interval');
+    intervalRef.current = setInterval(goNext, 3000);
+    return () => {
+      console.log('[Cleanup] Clearing interval');
+      clearInterval(intervalRef.current);
+    };
   }, []);
 
   useEffect(() => {
     if (slideRef.current) {
-      slideRef.current.style.transform = `translateX(-${index * 100}%)`;
+      const transformValue = `translateX(-${index * 100}%)`;
+      slideRef.current.style.transform = transformValue;
+      console.log(`[Transform] Applied: ${transformValue}`);
     }
   }, [index]);
 
+  const handleManualNav = (action) => {
+    console.log('[Manual Nav] Pausing auto-slide and performing action...');
+    clearInterval(intervalRef.current);
+    action();
+    intervalRef.current = setInterval(goNext, 3000);
+  };
+
   return (
     <section className={styles.container}>
-      <h2 className={styles.title}>{fieldValues.title}</h2>
+      <h2 className={styles.title}>{fieldValues.title || 'Browse Categories'}</h2>
       <div className={styles.sliderWrapper}>
+        {/* Slider */}
         <div className={styles.slider} ref={slideRef}>
           {slides.map((slide) => (
             <div key={slide.id} className={styles.slide}>
@@ -85,12 +120,28 @@ export function Component({ fieldValues }) {
             </div>
           ))}
         </div>
+
+        {/* Arrows */}
+        <button
+          className={`${styles.arrow} ${styles.left}`}
+          onClick={() => handleManualNav(goPrev)}
+        >
+          ‹
+        </button>
+        <button
+          className={`${styles.arrow} ${styles.right}`}
+          onClick={() => handleManualNav(goNext)}
+        >
+          ›
+        </button>
+
+        {/* Dots */}
         <div className={styles.dots}>
           {slides.map((_, i) => (
             <span
               key={i}
               className={`${styles.dot} ${i === index ? styles.active : ''}`}
-              onClick={() => setIndex(i)}
+              onClick={() => handleManualNav(() => goToSlide(i))}
             />
           ))}
         </div>
@@ -98,6 +149,7 @@ export function Component({ fieldValues }) {
     </section>
   );
 }
+
 
 export const fields = (
   <ModuleFields>

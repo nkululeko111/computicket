@@ -3,6 +3,8 @@
   padding: 2rem 0;
   background-color: #f9f9f9;
   width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Section title */
@@ -28,7 +30,6 @@
 .slider {
   display: flex;
   transition: transform 0.6s ease-in-out;
-  width: 100%;
 }
 
 /* Each slide */
@@ -62,8 +63,8 @@
 
 /* Slide title */
 .slideTitle {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
 }
 
 /* Slide description */
@@ -75,20 +76,20 @@
 /* Book Now button */
 .button {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: #ff5a5f;
+  background-color: #e60000;
   color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
   text-decoration: none;
-  border-radius: 4px;
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
 
 .button:hover {
-  background-color: #e14c4f;
+  background-color: #cc0000;
 }
 
-/* Dot navigation */
+/* Dots */
 .dots {
   position: absolute;
   bottom: 12px;
@@ -100,16 +101,43 @@
 }
 
 .dot {
-  width: 12px;
   height: 12px;
-  background-color: #ccc;
+  width: 12px;
+  background-color: #bbb;
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .dot.active {
-  background-color: #ff5a5f;
+  background-color: #e60000;
+}
+
+/* Arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(76, 74, 74, 0.7);
+  border: none;
+  font-size: 2rem;
+  padding: 0 12px;
+  cursor: pointer;
+  z-index: 3;
+  color: #e60000;
+  border-radius: 50%;
+}
+
+.arrow:hover {
+  background: #000;
+}
+
+.left {
+  left: 10px;
+}
+
+.right {
+  right: 10px;
 }
 
 /* Responsive adjustments */
