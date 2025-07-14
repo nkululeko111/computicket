@@ -9,7 +9,7 @@
   "type": "module",
   "keywords": [],
   "dependencies": {
-    "@hubspot/cms-components": "latest",
+    "@hubspot/cms-components": "^1.0.37",
     "react": "^18"
   },
   "devDependencies": {

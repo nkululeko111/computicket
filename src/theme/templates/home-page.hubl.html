@@ -8,8 +8,26 @@
 
 {% block body %}
 
-    
-  {% module "eventList" path="../components/modules/EventList" %}
-  {% module "bookingForm" path="../components/modules/BookingForm" %}
+<!-- Experience Selector -->
+<section class="ct-experience-selector">
+  ...
+</section>
 
-{% endblock body %}
+<!-- Featured Events -->
+<section class="ct-featured-events">
+  ...
+</section>
+
+<!-- Event list from module -->
+{% module "eventList" path="../components/modules/EventList" %}
+
+<!-- Booking form from module -->
+{% module "bookingForm" path="../components/modules/BookingForm" %}
+
+<!-- Newsletter -->
+<section class="ct-newsletter">
+  ...
+</section>
+
+{% endblock %}
+
