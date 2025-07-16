@@ -88,7 +88,7 @@ export const Component = () => {
         <div className={styles['card-grid']}>
           {/* Hotel Card */}
           <div className={styles.card}>
-            <div className={styles['card-image']} style={{ backgroundImage: `url(https://images.unsplash.com/photo-1582719471387-9d59e3df4900?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80)` }}>
+            <div className={styles['card-image']} style={{ backgroundImage: `url(https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80)` }}>
               <div className={styles['price-tag']}>From R882 per night</div>
             </div>
             <div className={styles['card-content']}>
