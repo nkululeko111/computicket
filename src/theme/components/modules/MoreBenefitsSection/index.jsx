@@ -1,7 +1,7 @@
 import React from 'react';
 import { ModuleFields, ImageField, TextField, UrlField } from '@hubspot/cms-components/fields';
 import styles from './MoreBenefitsSection.module.css';
-import eventImg from '../../assets/images/partner-events.png'; 
+import eventImg from '../../../assets/images/partner-events.png'; 
 
 export const Component = () => {
   return (
