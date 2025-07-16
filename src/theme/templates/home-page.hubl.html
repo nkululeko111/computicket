@@ -42,18 +42,18 @@
 
 <!-- Featured Events -->
 <section class="ct-featured-events">
-  <div class="ct-container">
-    {% module "eventList" path="../components/modules/EventList" %}
-  </div>
+ 
+  {% include "../styles/partials/_test.hubl.html"%}
+
   <div class="ct-text-center ct-load-more">
     {% module "homeBunner" path="../components/modules/HomeBanner" %}
   </div>
 </section>
 
 <!-- Inject Bus Banner Partial Here -->
-{% include "../styles/partials/_bus-banner.hubl.html" %}
+{% include "../styles/partials/_bus-banner.hubl.html" %} 
 {% module "perfectExperience" path="../components/modules/PerfectExperience" %}
-{% module "moreBenefits" path="../components/partials/MoreBenefitsSection" %}
+{% module "moreBenefits" path="../components/modules/MoreBenefitsSection" %}
 
 <!-- Newsletter Section -->
 <section class="ct-newsletter">
@@ -64,5 +64,6 @@
     <button type="submit">JOIN NOW</button>
   </form>
 </section>
+
 
 {% endblock %}

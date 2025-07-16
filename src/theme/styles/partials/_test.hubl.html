@@ -1,0 +1,72 @@
+{% require_css %}
+  <link rel="stylesheet" href="{{ get_asset_url('./_test.css') }}">
+{% end_require_css %}
+
+<div class="ct-slider-container">
+  <div class="ct-slider">
+    <div class="ct-slide active" style="background-image: url('https://images.unsplash.com/photo-1518972559570-7cc1309f3229?auto=format&fit=crop&w=1600&q=80');">
+      <div class="ct-slide-info">
+        <h3>Live Concert - Joburg</h3>
+        <p>Experience the thrill of live music under the stars.</p>
+        <a href="#" class="ct-book-btn">Book Now</a>
+      </div>
+    </div>
+
+    <div class="ct-slide" style="background-image: url('https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=1600&q=80');">
+      <div class="ct-slide-info">
+        <h3>Sun City Weekender</h3>
+        <p>Relax, unwind and enjoy music with friends.</p>
+        <a href="#" class="ct-book-btn">Book Now</a>
+      </div>
+    </div>
+
+    <div class="ct-slide" style="background-image: url('https://images.unsplash.com/photo-1518976024611-488b717a73c9?auto=format&fit=crop&w=1600&q=80');">
+      <div class="ct-slide-info">
+        <h3>Anthony Hamilton Live</h3>
+        <p>The soul legend takes the stage – don't miss out.</p>
+        <a href="#" class="ct-book-btn">Book Now</a>
+      </div>
+    </div>
+
+    <button class="ct-prev">&#10094;</button>
+    <button class="ct-next">&#10095;</button>
+
+    <div class="ct-dots">
+      <span class="ct-dot active"></span>
+      <span class="ct-dot"></span>
+      <span class="ct-dot"></span>
+    </div>
+  </div>
+</div>
+
+{% require_js %}
+<script>
+  const slides = document.querySelectorAll('.ct-slide');
+  const dots = document.querySelectorAll('.ct-dot');
+  const prev = document.querySelector('.ct-prev');
+  const next = document.querySelector('.ct-next');
+  let current = 0;
+
+  function updateSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+      dots[i].classList.toggle('active', i === index);
+    });
+    current = index;
+  }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => updateSlide(i));
+  });
+
+  prev.addEventListener('click', () => {
+    updateSlide((current - 1 + slides.length) % slides.length);
+  });
+
+  next.addEventListener('click', () => {
+    updateSlide((current + 1) % slides.length);
+  });
+
+  setInterval(() => updateSlide((current + 1) % slides.length), 6000);
+</script>
+{% end_require_js %}

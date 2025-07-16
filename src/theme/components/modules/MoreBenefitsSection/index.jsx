@@ -1,8 +1,9 @@
 import React from 'react';
+import { ModuleFields, ImageField, TextField, UrlField } from '@hubspot/cms-components/fields';
 import styles from './MoreBenefitsSection.module.css';
 import eventImg from '../../assets/images/partner-events.png'; 
 
-export default function MoreBenefitsSection() {
+export const Component = () => {
   return (
     <section className={styles.section}>
       <div className={styles.contentContainer}>
@@ -42,5 +43,15 @@ export default function MoreBenefitsSection() {
       </div>
     </section>
   );
-
 }
+
+export const fields = (
+  <ModuleFields>
+    <ImageField name="background_image" label="Background Image" />
+    <UrlField name="cta_link" label="CTA Link" />
+  </ModuleFields>
+);
+
+export const meta = {
+  label: 'moreBenefits',
+};

@@ -99,8 +99,6 @@ export function Component({ fieldValues }) {
 export const fields = (
   <ModuleFields>
     <ImageField name="background_image" label="Background Image" />
-    <TextField name="headline" label="Headline" default="Welcome to our site" />
-    <TextField name="cta_button" label="CTA Button Text" default="Learn More" />
     <UrlField name="cta_link" label="CTA Link" default="/" />
   </ModuleFields>
 );
