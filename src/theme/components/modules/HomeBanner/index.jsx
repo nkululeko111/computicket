@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   ModuleFields,
   ImageField,
@@ -98,10 +99,12 @@ export function Component({ fieldValues }) {
 export const fields = (
   <ModuleFields>
     <ImageField name="background_image" label="Background Image" />
-    <UrlField name="cta_link" label="CTA Link" />
+    <TextField name="headline" label="Headline" default="Welcome to our site" />
+    <TextField name="cta_button" label="CTA Button Text" default="Learn More" />
+    <UrlField name="cta_link" label="CTA Link" default="/" />
   </ModuleFields>
 );
 
 export const meta = {
-  label: 'homeBanner',
+  label: 'Home Banner',
 };

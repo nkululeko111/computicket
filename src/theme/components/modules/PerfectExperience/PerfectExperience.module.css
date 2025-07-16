@@ -1,0 +1,135 @@
+/* Main Section Styles */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Heading Styles */
+.heading-center {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.h2-center {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #e53935; /* Red color */
+  margin-bottom: 0.5rem;
+}
+
+.h4-center {
+  font-size: 1.25rem;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+/* Experience Section Styles */
+.experience-section {
+  margin-bottom: 4rem;
+}
+
+.h3-bold-margin {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.h4-margin {
+  font-size: 1.125rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* Card Grid Styles */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+/* Card Styles */
+.card {
+  width: 350px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  background: white;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-image {
+  position: relative;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.price-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #e53935;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.card-location {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.card-location svg {
+  margin-right: 0.5rem;
+}
+
+.card-description {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .h2-center {
+    font-size: 2rem;
+  }
+  
+  .h4-center {
+    font-size: 1.1rem;
+  }
+  
+  .card {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .h3-bold-margin {
+    font-size: 1.5rem;
+  }
+}

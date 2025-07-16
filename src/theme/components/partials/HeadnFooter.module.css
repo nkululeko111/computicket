@@ -1,0 +1,98 @@
+.header {
+  background: white;
+  box-shadow: var(--ct-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--ct-gray-900);
+}
+
+.logoImg {
+  height: 58px;
+  object-fit: contain;
+}
+
+.miniHeader {
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 15px;
+}
+
+.mainNav {
+  display: flex;
+  gap: 2rem;
+}
+
+.mainNav a {
+  color: var(--ct-gray-700);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.mainNav a:hover {
+  color: var(--ct-red);
+}
+
+.mainNav a.active {
+  color: var(--ct-red);
+  border-bottom-color: var(--ct-red);
+}
+
+.mobileMenu {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--ct-gray-700);
+  cursor: pointer;
+}
+
+.hiddenNav {
+  display: none;
+}
+
+.showNav .hiddenNav {
+  display: block;
+}
+
+.hiddenNav a {
+  margin-right: 1rem;
+}
+
+.hiddenNav a:last-child {
+  margin-right: 0;
+}
+
+@media (max-width: 768px) {
+  .mainNav {
+    display: none;
+  }
+
+  .mobileMenu {
+    display: block;
+  }
+}
+
+
+
+

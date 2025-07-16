@@ -52,19 +52,17 @@
 
 <!-- Inject Bus Banner Partial Here -->
 {% include "../styles/partials/_bus-banner.hubl.html" %}
+{% module "perfectExperience" path="../components/modules/PerfectExperience" %}
+{% module "moreBenefits" path="../components/partials/MoreBenefitsSection" %}
 
 <!-- Newsletter Section -->
 <section class="ct-newsletter">
-  <div class="ct-container">
-    <div class="ct-text-center">
-      <i class="fas fa-envelope ct-newsletter-icon"></i>
-      <h2>GET THE LATEST EVENT INFO</h2>
-      <p>Sign up to stay updated on the latest events, offers, and more!</p>
-      <form class="ct-newsletter-form" id="newsletterForm">
-        <button type="submit" class="ct-btn ct-btn-white">JOIN NOW</button>
-      </form>
-    </div>
-  </div>
+  <h2>GET THE LATEST EVENT INFO</h2>
+  <p>Sign up to stay updated on the latest events, offers, and more! <a href="/signup">SIGN UP HERE</a></p>
+  <form class="ct-newsletter-form">
+    <input type="email" placeholder="Enter your email" required />
+    <button type="submit">JOIN NOW</button>
+  </form>
 </section>
 
 {% endblock %}

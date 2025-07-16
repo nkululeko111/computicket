@@ -1,0 +1,97 @@
+.section {
+  background: linear-gradient(135deg, #1a1a1a 0%, #7b0d0d 100%);
+  color: white;
+  padding: 4rem 2rem;
+}
+
+.contentContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+}
+
+.textContent {
+  flex: 1 1 50%;
+  padding-right: 2rem;
+}
+
+.headline {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.subtext {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.ctaButton {
+  background-color: #e53e3e;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: #c53030;
+}
+
+.imageWrapper {
+  flex: 1 1 40%;
+  text-align: center;
+}
+
+.imageWrapper img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: #2d2d2d;
+  color: #f1f1f1;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .contentContainer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .textContent {
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
+}
