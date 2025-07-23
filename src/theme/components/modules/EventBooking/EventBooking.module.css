@@ -1,0 +1,133 @@
+/* Basic styles for container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Title & Subtitle */
+.title {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+/* Search Section */
+.searchSection {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 50px;
+}
+
+/* Scene/theme suggestions */
+.popularSearches {
+  margin-top: 50px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Suggestions grid */
+.suggestionsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  padding: 0 10px;
+  margin-bottom: 40px;
+}
+
+.suggestion {
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.suggestion:hover {
+  background-color: #0056b3;
+}
+
+/* Event cards */
+.eventsSection {
+  margin-top: 50px;
+}
+
+.eventCard {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.eventCard h3 {
+  margin-top: 0;
+}
+
+.eventMeta {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+/* Search form styles */
+.fieldsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.fieldGroup {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldGroup label {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.fieldGroup input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Search button */
+.searchButton {
+  display: inline-block;
+  width: 100%;
+  padding: 15px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.searchButton:hover {
+  background-color: #0056b3;
+}
