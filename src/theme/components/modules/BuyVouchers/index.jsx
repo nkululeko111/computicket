@@ -99,7 +99,5 @@ export const fields = (
     <TextField name="voucher2Price" label="Voucher 2 Price" defaultValue="R50 - R1000" />
     <TextField name="voucher2Value" defaultValue="Shoprite Group Virtual Grocery Vouchers" />
 
-    {/* For simplicity, hardcoded vouchers in code; alternatively, you could pass an array of vouchers */}
-    {/* In actual use, you might define an array of vouchers in your code instead of fields */}
   </ModuleFields>
 );
