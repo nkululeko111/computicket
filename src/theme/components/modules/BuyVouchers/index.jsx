@@ -97,7 +97,7 @@ export const fields = (
 
     <TextField name="voucher2Label" label="Voucher 2 Label" defaultValue="Shoprite Group Virtual Grocery Vouchers" />
     <TextField name="voucher2Price" label="Voucher 2 Price" defaultValue="R50 - R1000" />
-    <TextField name="voucher2Value" defaultValue="Shoprite Group Virtual Grocery Vouchers" />
+    <TextField name="voucher2Value" label="Voucher 2 Value" defaultValue="Shoprite Group Virtual Grocery Vouchers" />
 
   </ModuleFields>
 );
