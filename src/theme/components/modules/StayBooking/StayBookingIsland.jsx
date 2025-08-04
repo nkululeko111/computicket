@@ -1,44 +1,45 @@
-import React, { useState } from 'react';
-import {
-  ModuleFields,
-  ImageField,
-  TextField,
-  UrlField,
-} from '@hubspot/cms-components/fields';
+// src/theme/components/modules/StayBookingModule/StayBookingIsland.jsx
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 import styles from './StayBooking.module.css';
 
-export const Component = ({ fields }) => {
-  const { background_image } = fields || {};
-
+export default function StayBookingIsland({
+  background_image = '',
+  destination = '',
+  check_in = '',
+  check_out = '',
+  cta_link = '',
+}) {
   const [showGuestModal, setShowGuestModal] = useState(false);
   const [adultCount, setAdultCount] = useState(2);
   const [childCount, setChildCount] = useState(0);
   const [radius, setRadius] = useState(6);
-  const [destinationInput, setDestinationInput] = useState('');
-  const [checkIn, setCheckIn] = useState('');
-  const [checkOut, setCheckOut] = useState('');
+  const [destinationInput, setDestinationInput] = useState(destination);
+  const [checkIn, setCheckIn] = useState(check_in);
+  const [checkOut, setCheckOut] = useState(check_out);
   const totalGuests = adultCount + childCount;
 
-  const toggleGuestModal = () => setShowGuestModal(!showGuestModal);
+  const toggleGuestModal = () => setShowGuestModal((s) => !s);
 
-  // Replace with images from another source like Pexels or Pixabay
+  // Destination images
   const destinationImages = {
     'cape-town': 'https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg',
     'kruger-park': 'https://images.pexels.com/photos/356378/pexels-photo-356378.jpeg',
-    'drakensburg': 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg',
-    'rome': 'https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg',
-    'phuket': 'https://images.pexels.com/photos/462353/pexels-photo-462353.jpeg',
-    'porto': 'https://images.pexels.com/photos/33972/pexels-photo.jpg',
+    drakensburg: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg',
+    rome: 'https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg',
+    phuket: 'https://images.pexels.com/photos/462353/pexels-photo-462353.jpeg',
+    porto: 'https://images.pexels.com/photos/33972/pexels-photo.jpg',
   };
 
-  // Property images from another source
+  // Property images
   const propertyImages = {
     'lavender-manor': 'https://images.pexels.com/photos/262048/pexels-photo-262048.jpeg',
     'harbour-house': 'https://images.pexels.com/photos/116296/pexels-photo-116296.jpeg',
-    'marine': 'https://images.pexels.com/photos/290132/pexels-photo-290132.jpeg',
+    marine: 'https://images.pexels.com/photos/290132/pexels-photo-290132.jpeg',
   };
 
-  // Sample groups data
+  // Sample groups data (could be lifted out if static)
   const groups = [
     {
       heading: 'Hermanus, Western Cape',
@@ -50,14 +51,14 @@ export const Component = ({ fields }) => {
           price: 'R 3,377',
           tags: ['Beach views', 'Terrace Breakfasts'],
           description:
-            '…boasts panoramic views of Grotto Beach and offers guests great whale‑watching opportunities. Overlooking Walker Bay, Lavender Manor radiates a warm and sophisticated atmosphere.',
+            '…boasts panoramic views of Grotto Beach and offers guests great whale-watching opportunities. Overlooking Walker Bay, Lavender Manor radiates a warm and sophisticated atmosphere.',
         },
         {
           name: 'Harbour House Hotel',
           price: 'R 5,592',
           tags: ['Pool', 'Restaurant', 'Garden & Terrace'],
           description:
-            'Set in Hermanus, 27 km from Mt Hebron Nature Reserve, Harbour House Hotel - Manor House offers accommodation with an outdoor swimming pool, free private parking, a garden and a terrace.',
+            'Set in Hermanus, 27 km from Mt Hebron Nature Reserve, Harbour House Hotel - Manor House offers accommodation with an outdoor swimming pool, free private parking, a garden and a terrace.',
         },
         {
           name: 'The Marine',
@@ -76,9 +77,9 @@ export const Component = ({ fields }) => {
         {
           name: 'Holiday Inn Express',
           price: 'R 3,804',
-          tags: ['Buffet Breakfast', '30 Min from Edinburgh'],
+          tags: ['Buffet Breakfast', '30 Min from Edinburgh'],
           description:
-            'Just off the main motorway network. Easily accessible from Queen Margaret train station. The hotel is only 30 minutes from Edinburgh.',
+            'Just off the main motorway network. Easily accessible from Queen Margaret train station. The hotel is only 30 minutes from Edinburgh.',
         },
         {
           name: 'Britannia Hotel Edinburgh',
@@ -88,11 +89,11 @@ export const Component = ({ fields }) => {
             'Situated on the banks of the Waters of Leith in the West end of Edinburgh City Centre...',
         },
         {
-          name: 'Motel One Edinburgh‑Royal',
+          name: 'Motel One Edinburgh-Royal',
           price: 'R 9,933',
           tags: ['Central Location', 'Easy Walk to attractions'],
           description:
-            'Situated in the centre of Edinburgh, the Motel One Edinburgh‑Royal is 5 minutes walk away from the train station...',
+            'Situated in the centre of Edinburgh, the Motel One Edinburgh-Royal is 5 minutes walk away from the train station...',
         },
       ],
     },
@@ -106,7 +107,7 @@ export const Component = ({ fields }) => {
           price: 'R 1,584',
           tags: ['Beautiful woodwork', 'Train memorabilia'],
           description:
-            'The spectacular lobby with its yellowwood trunks and amazing 3 m stained glass windows brings a calm and relaxing ambience...',
+            'The spectacular lobby with its yellowwood trunks and amazing 3 m stained glass windows brings a calm and relaxing ambience...',
         },
         {
           name: 'Protea Hotel by Marriott Knysna Quays',
@@ -156,19 +157,18 @@ export const Component = ({ fields }) => {
 
   return (
     <div className={styles.container}>
-      {/* Hero Background Image */}
+      {/* Hero */}
       <div className={styles.hero}>
         {background_image ? (
           <img src={background_image} alt="Stay background" className={styles.heroImage} />
         ) : (
-          <div className={styles.heroPlaceholder}> {/* placeholder if no image */} </div>
+          <div className={styles.heroPlaceholder} />
         )}
-        {/* Hero Overlay with a different background image */}
         <div
           className={styles.heroOverlay}
           style={{
             backgroundImage:
-              'url(https://images.pexels.com/photos/375294/pexels-photo-375294.jpeg)', // New overlay background
+              'url(https://images.pexels.com/photos/375294/pexels-photo-375294.jpeg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -184,10 +184,10 @@ export const Component = ({ fields }) => {
       <div className={styles.bookingModal}>
         <h2>Find Your Perfect Stay</h2>
 
-        {/* Destination Input */}
         <div className={styles.fieldGroup}>
-          <label>Where would you like to go?</label>
+          <label htmlFor="destinationInput">Where would you like to go?</label>
           <input
+            id="destinationInput"
             type="text"
             placeholder="Enter your destination"
             value={destinationInput}
@@ -195,10 +195,10 @@ export const Component = ({ fields }) => {
           />
         </div>
 
-        {/* Search Radius Slider */}
         <div className={styles.fieldGroup}>
-          <label>Search Radius: {radius} km</label>
+          <label htmlFor="radiusRange">Search Radius: {radius} km</label>
           <input
+            id="radiusRange"
             type="range"
             min="1"
             max="50"
@@ -207,19 +207,20 @@ export const Component = ({ fields }) => {
           />
         </div>
 
-        {/* Date Pickers */}
         <div className={styles.dateFields}>
           <div>
-            <label>Check-in</label>
+            <label htmlFor="checkIn">Check-in</label>
             <input
+              id="checkIn"
               type="date"
               value={checkIn}
               onChange={(e) => setCheckIn(e.target.value)}
             />
           </div>
           <div>
-            <label>Check-out</label>
+            <label htmlFor="checkOut">Check-out</label>
             <input
+              id="checkOut"
               type="date"
               value={checkOut}
               onChange={(e) => setCheckOut(e.target.value)}
@@ -227,7 +228,6 @@ export const Component = ({ fields }) => {
           </div>
         </div>
 
-        {/* Guests Selector */}
         <div className={styles.fieldGroup}>
           <label>Guests</label>
           <button className={styles.guestsButton} onClick={toggleGuestModal}>
@@ -237,47 +237,35 @@ export const Component = ({ fields }) => {
           {showGuestModal && (
             <div className={styles.guestModal}>
               <h4>Select Guests (Max 9 total)</h4>
-              {/* Adults */}
               <div className={styles.guestRow}>
                 <span>Adults (13+)</span>
                 <div className={styles.counter}>
-                  <button
-                    onClick={() => setAdultCount(Math.max(0, adultCount - 1))}
-                  >
+                  <button onClick={() => setAdultCount(Math.max(0, adultCount - 1))}>
                     -
                   </button>
                   <span>{adultCount}</span>
                   <button
-                    onClick={() =>
-                      setAdultCount(Math.min(9 - childCount, adultCount + 1))
-                    }
+                    onClick={() => setAdultCount(Math.min(9 - childCount, adultCount + 1))}
                   >
                     +
                   </button>
                 </div>
               </div>
-              {/* Children */}
               <div className={styles.guestRow}>
                 <span>Children (0-12)</span>
                 <div className={styles.counter}>
-                  <button
-                    onClick={() => setChildCount(Math.max(0, childCount - 1))}
-                  >
+                  <button onClick={() => setChildCount(Math.max(0, childCount - 1))}>
                     -
                   </button>
                   <span>{childCount}</span>
                   <button
-                    onClick={() =>
-                      setChildCount(Math.min(9 - adultCount, childCount + 1))
-                    }
+                    onClick={() => setChildCount(Math.min(9 - adultCount, childCount + 1))}
                   >
                     +
                   </button>
                 </div>
               </div>
-              {/* Total guests */}
               <p>Total guests: {totalGuests} / 9</p>
-              {/* Apply button */}
               <button
                 className={styles.applyButton}
                 onClick={() => setShowGuestModal(false)}
@@ -288,7 +276,6 @@ export const Component = ({ fields }) => {
           )}
         </div>
 
-        {/* Search Button */}
         <button className={styles.searchButton}>Search Accommodation</button>
       </div>
 
@@ -312,7 +299,7 @@ export const Component = ({ fields }) => {
                     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
                     .join(' ')}
                 </h4>
-                <p>From R{Math.floor(Math.random() * 1000 + 150)} </p>
+                <p>From R{Math.floor(Math.random() * 1000 + 150)}</p>
                 <p>{Math.floor(Math.random() * 100 + 10)} properties</p>
               </div>
             </div>
@@ -320,7 +307,7 @@ export const Component = ({ fields }) => {
         </div>
       </section>
 
-      {/* Featured Properties Header */}
+      {/* Featured Properties */}
       <section className={styles.section}>
         <h2 className={styles.featuredHeading}>Featured Properties</h2>
         <p className={styles.featuredSubtitle}>
@@ -328,7 +315,6 @@ export const Component = ({ fields }) => {
         </p>
       </section>
 
-      {/* Featured Properties Group */}
       {groups.map((grp, idx) => (
         <section key={idx} className={styles.section}>
           <h2 className={styles.alignLeft}>{grp.heading}</h2>
@@ -339,7 +325,11 @@ export const Component = ({ fields }) => {
                 <div
                   className={styles.propertyImage}
                   style={{
-                    backgroundImage: `url(${propertyImages[prop.name.toLowerCase().replace(/\s+/g, '-')]} || 'https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg')`,
+                    backgroundImage: `url(${
+                      propertyImages[
+                        prop.name.toLowerCase().replace(/\s+/g, '-')
+                      ] || 'https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg'
+                    })`,
                   }}
                 >
                   <div className={styles.propertyBadge}>
@@ -360,18 +350,12 @@ export const Component = ({ fields }) => {
       ))}
     </div>
   );
-};
+}
 
-export const fields = (
-  <ModuleFields>
-    <ImageField name="background_image" label="Background Image" />
-    <TextField name="destination" label="Destination" />
-    <TextField name="check_in" label="Check-in Date" />
-    <TextField name="check_out" label="Check-out Date" />
-    <UrlField name="cta_link" label="CTA Link" />
-  </ModuleFields>
-);
-
-export const meta = {
-  label: 'Stay Booking Module',
+StayBookingIsland.propTypes = {
+  background_image: PropTypes.string,
+  destination: PropTypes.string,
+  check_in: PropTypes.string,
+  check_out: PropTypes.string,
+  cta_link: PropTypes.string,
 };

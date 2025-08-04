@@ -1,38 +1,45 @@
 import React from 'react';
-import { ModuleFields, SelectField, TextField, DateField, UrlField } from '@hubspot/cms-components/fields';
+import PropTypes from 'prop-types';
 import styles from './FlightBooking.module.css';
 
-
-export const Component = ({ fields }) => {
-
-  const {
-    tripType,
-    departingFrom,
-    travelingTo,
-    departureDate,
-    ctaLink,
-  } = fields || {};
-
-  // State to toggle trip type (One Way / Return)
+export default function FlightBookingIsland({
+  tripType = 'One Way',
+  departingFrom = '',
+  travelingTo = '',
+  departureDate = '',
+  returnDate = '',
+  ctaLink = '',
+}) {
   const [isReturn, setIsReturn] = React.useState(tripType === 'Return');
+  const [from, setFrom] = React.useState(departingFrom);
+  const [to, setTo] = React.useState(travelingTo);
+  const [depDate, setDepDate] = React.useState(departureDate);
+  const [retDate, setRetDate] = React.useState(returnDate);
+
+  React.useEffect(() => {
+    setIsReturn(tripType === 'Return');
+  }, [tripType]);
 
   return (
     <div className={styles.container}>
-      {/* Main Heading */}
       <h1 className={styles.title}>The World Awaits</h1>
-      <p className={styles.subtitle}>Flights that connect you to extraordinary experiences worldwide</p>
+      <p className={styles.subtitle}>
+        Flights that connect you to extraordinary experiences worldwide
+      </p>
 
-      {/* Flight Search Form */}
       <div className={styles.formSection}>
-        {/* Trip Type Toggle */}
-        <div className={styles.tripTypeToggle}>
+        <div className={styles.tripTypeToggle} role="group" aria-label="Trip type">
           <button
+            type="button"
+            aria-pressed={!isReturn}
             className={`${styles.toggleButton} ${!isReturn ? styles.active : ''}`}
             onClick={() => setIsReturn(false)}
           >
             One Way
           </button>
           <button
+            type="button"
+            aria-pressed={isReturn}
             className={`${styles.toggleButton} ${isReturn ? styles.active : ''}`}
             onClick={() => setIsReturn(true)}
           >
@@ -40,46 +47,52 @@ export const Component = ({ fields }) => {
           </button>
         </div>
 
-        {/* Form Fields */}
         <div className={styles.fieldsContainer}>
           <div className={styles.fieldGroup}>
-            <label>Departing From</label>
+            <label htmlFor="departingFrom">Departing From</label>
             <input
+              id="departingFrom"
               type="text"
               placeholder="Enter city or airport"
-              defaultValue={departingFrom}
+              value={from}
+              onChange={(e) => setFrom(e.target.value)}
             />
           </div>
 
           <div className={styles.fieldGroup}>
-            <label>Traveling To</label>
+            <label htmlFor="travelingTo">Traveling To</label>
             <input
+              id="travelingTo"
               type="text"
               placeholder="Enter city or airport"
-              defaultValue={travelingTo}
+              value={to}
+              onChange={(e) => setTo(e.target.value)}
             />
           </div>
 
           <div className={styles.fieldGroup}>
-            <label>Departure Date</label>
+            <label htmlFor="departureDate">Departure Date</label>
             <input
+              id="departureDate"
               type="date"
-              defaultValue={departureDate}
+              value={depDate}
+              onChange={(e) => setDepDate(e.target.value)}
             />
           </div>
 
           {isReturn && (
             <div className={styles.fieldGroup}>
-              <label>Return Date</label>
+              <label htmlFor="returnDate">Return Date</label>
               <input
+                id="returnDate"
                 type="date"
-                defaultValue={fields.returnDate}
+                value={retDate}
+                onChange={(e) => setRetDate(e.target.value)}
               />
             </div>
           )}
         </div>
 
-        {/* Call to Action Button */}
         {ctaLink && (
           <a href={ctaLink} className={styles.searchButton}>
             Find Your Perfect Flight
@@ -87,9 +100,8 @@ export const Component = ({ fields }) => {
         )}
       </div>
 
-      {/* Flight Booking Tips & Guides */}
       <div className={styles.guidesSection}>
-        <h2 className={styles.guidesTitle}>Flight Booking Tips & Guides</h2>
+        <h2 className={styles.guidesTitle}>Flight Booking Tips &amp; Guides</h2>
         <div className={styles.tipsGrid}>
           <div className={styles.tipCard}>
             <h3>Best Time to Book Flights</h3>
@@ -111,15 +123,13 @@ export const Component = ({ fields }) => {
       </div>
     </div>
   );
-};
+}
 
-export const meta = {
-  label: 'Flight Booking Module',
+FlightBookingIsland.propTypes = {
+  tripType: PropTypes.oneOf(['One Way', 'Return']),
+  departingFrom: PropTypes.string,
+  travelingTo: PropTypes.string,
+  departureDate: PropTypes.string,
+  returnDate: PropTypes.string,
+  ctaLink: PropTypes.string,
 };
-
-// Define the fields at the end
-export const fields = (
-  <ModuleFields>
-    <UrlField name="cta_link" label="CTA Link"/>
-  </ModuleFields>
-);
