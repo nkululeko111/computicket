@@ -5,6 +5,7 @@ import {
   TextField,
   UrlField,
 } from '@hubspot/cms-components/fields';
+
 import styles from './HomeBanner.module.css';
 
 export function Component({ fieldValues }) {
@@ -33,7 +34,7 @@ export function Component({ fieldValues }) {
           {/* Card 1 */}
           <div className={styles.card}>
             <img
-              src={fieldValues.ile_aux_aigrettes_image?.src}
+              src="https://146524876.fs1.hubspotusercontent-eu1.net/hubfs/146524876/ile-aux-Aigrettes.png"
               alt="Île aux Aigrettes"
               className={styles.cardImg}
             />
@@ -53,7 +54,7 @@ export function Component({ fieldValues }) {
           {/* Card 2 */}
           <div className={styles.card}>
             <img
-              src={fieldValues.chamarel_hotel_image?.src}
+              src="https://146524876.fs1.hubspotusercontent-eu1.net/hubfs/146524876/Chamarel-hotel.png"
               alt="Chamarel Village"
               className={styles.cardImg}
             />
@@ -73,7 +74,7 @@ export function Component({ fieldValues }) {
           {/* Card 3 */}
           <div className={styles.card}>
             <img
-              src={fieldValues.trou_aux_cerfs_image?.src}
+              src="https://146524876.fs1.hubspotusercontent-eu1.net/hubfs/146524876/Trou-aux-Cerfs.png"
               alt="Trou aux Cerfs"
               className={styles.cardImg}
             />
@@ -98,9 +99,6 @@ export function Component({ fieldValues }) {
 export const fields = (
   <ModuleFields>
     <ImageField name="background_image" label="Background Image" />
-    <ImageField name="ile_aux_aigrettes_image" label="Île aux Aigrettes Image" />
-    <ImageField name="chamarel_hotel_image" label="Chamarel Hotel Image" />
-    <ImageField name="trou_aux_cerfs_image" label="Trou aux Cerfs Image" />
     <TextField name="headline" label="Headline" />
     <TextField name="cta_button" label="CTA Button Text" />
     <UrlField name="cta_link" label="CTA Link" />
