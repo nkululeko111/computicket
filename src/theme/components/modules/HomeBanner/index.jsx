@@ -5,9 +5,9 @@ import {
   TextField,
   UrlField,
 } from '@hubspot/cms-components/fields';
-import ileAuxAigrettesImg from '../../assets/images/ile-aux-aigrettes.jpg';
-import chamarelHotelImg from '../../assets/images/chamarel-hotel.jpg';
-import trouAuxCerfsImg from '../../assets/images/Trou-aux-Cerfs.jpg';
+import ileAuxAigrettesImg from '../../../assets/images/ile-aux-aigrettes.jpg';
+import chamarelHotelImg from '../../../assets/images/chamarel-hotel.jpg';
+import trouAuxCerfsImg from '../../../assets/images/Trou-aux-Cerfs.jpg';
 import styles from './HomeBanner.module.css';
 
 
