@@ -7,6 +7,9 @@ import {
 } from '@hubspot/cms-components/fields';
 
 import styles from './HomeBanner.module.css';
+import ileAuxAigrettesImg from '../../assets/images/ile-aux-aigrettes.jpg';
+import chamarelHotelImg from '../../assets/images/chamarel-hotel.jpg';
+import trouAuxCerfsImg from '../../assets/images/Trou-aux-Cerfs.jpg';
 
 export function Component({ fieldValues }) {
   return (
@@ -33,11 +36,7 @@ export function Component({ fieldValues }) {
         <div className={styles.cardGrid}>
           {/* Card 1 */}
           <div className={styles.card}>
-            <img
-              src="../../assets/images/ile-aux-aigrettes.jpg"
-              alt="Île aux Aigrettes"
-              className={styles.cardImg}
-            />
+              <img src={ileAuxAigrettesImg} alt="Île aux Aigrettes" className={styles.cardImg} />
             <div className={styles.cardOverlay}>
               <a
                 href="https://maps.google.com/?q=Île+aux+Aigrettes"
@@ -53,11 +52,7 @@ export function Component({ fieldValues }) {
 
           {/* Card 2 */}
           <div className={styles.card}>
-            <img
-              src="../../assets/images/chamarel-hotel.jpg"
-              alt="Chamarel Village"
-              className={styles.cardImg}
-            />
+           <img src={chamarelHotelImg} alt="Chamarel Village" className={styles.cardImg} />
             <div className={styles.cardOverlay}>
               <a
                 href="https://maps.google.com/?q=Chamarel+Village"
@@ -73,11 +68,7 @@ export function Component({ fieldValues }) {
 
           {/* Card 3 */}
           <div className={styles.card}>
-            <img
-              src="../../assets/images/Trou-aux-Cerfs.jpg"
-              alt="Trou aux Cerfs"
-              className={styles.cardImg}
-            />
+            <img src={trouAuxCerfsImg} alt="Trou aux Cerfs" className={styles.cardImg} />
             <div className={styles.cardOverlay}>
               <a
                 href="https://maps.google.com/?q=Trou+aux+Cerfs"

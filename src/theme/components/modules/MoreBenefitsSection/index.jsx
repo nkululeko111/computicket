@@ -3,6 +3,7 @@ import { ModuleFields, ImageField, TextField, UrlField } from '@hubspot/cms-comp
 import styles from './MoreBenefitsSection.module.css';
 import eventImg from '../../../assets/images/partner-events.png'; 
 
+
 export const Component = () => {
   return (
     <section className={styles.section}>
