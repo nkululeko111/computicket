@@ -3,9 +3,9 @@ import { ModuleFields, TextField } from '@hubspot/cms-components/fields';
 export const fields = (
   <ModuleFields>
     <TextField
-      label="Heading"
-      name="heading"
-      default="Hello World Test Update!"
+      label="Default Cart Message"
+      name="defaultCartMessage"
+      default="Your cart is empty"
     />
   </ModuleFields>
 );
