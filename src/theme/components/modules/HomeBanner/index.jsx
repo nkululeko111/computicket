@@ -5,11 +5,7 @@ import {
   TextField,
   UrlField,
 } from '@hubspot/cms-components/fields';
-import ileAuxAigrettesImg from '../../../assets/images/ile-aux-aigrettes.png';
-import chamarelHotelImg from '../../../assets/images/chamarel-hotel.png';
-import trouAuxCerfsImg from '../../../assets/images/Trou-aux-Cerfs.png';
 import styles from './HomeBanner.module.css';
-
 
 export function Component({ fieldValues }) {
   return (
@@ -36,7 +32,11 @@ export function Component({ fieldValues }) {
         <div className={styles.cardGrid}>
           {/* Card 1 */}
           <div className={styles.card}>
-              <img src={ileAuxAigrettesImg} alt="Île aux Aigrettes" className={styles.cardImg} />
+            <img
+              src={fieldValues.ile_aux_aigrettes_image?.src}
+              alt="Île aux Aigrettes"
+              className={styles.cardImg}
+            />
             <div className={styles.cardOverlay}>
               <a
                 href="https://maps.google.com/?q=Île+aux+Aigrettes"
@@ -52,7 +52,11 @@ export function Component({ fieldValues }) {
 
           {/* Card 2 */}
           <div className={styles.card}>
-           <img src={chamarelHotelImg} alt="Chamarel Village" className={styles.cardImg} />
+            <img
+              src={fieldValues.chamarel_hotel_image?.src}
+              alt="Chamarel Village"
+              className={styles.cardImg}
+            />
             <div className={styles.cardOverlay}>
               <a
                 href="https://maps.google.com/?q=Chamarel+Village"
@@ -68,7 +72,11 @@ export function Component({ fieldValues }) {
 
           {/* Card 3 */}
           <div className={styles.card}>
-            <img src={trouAuxCerfsImg} alt="Trou aux Cerfs" className={styles.cardImg} />
+            <img
+              src={fieldValues.trou_aux_cerfs_image?.src}
+              alt="Trou aux Cerfs"
+              className={styles.cardImg}
+            />
             <div className={styles.cardOverlay}>
               <a
                 href="https://maps.google.com/?q=Trou+aux+Cerfs"
@@ -90,7 +98,12 @@ export function Component({ fieldValues }) {
 export const fields = (
   <ModuleFields>
     <ImageField name="background_image" label="Background Image" />
-    <UrlField name="cta_link" label="CTA Link"/>
+    <ImageField name="ile_aux_aigrettes_image" label="Île aux Aigrettes Image" />
+    <ImageField name="chamarel_hotel_image" label="Chamarel Hotel Image" />
+    <ImageField name="trou_aux_cerfs_image" label="Trou aux Cerfs Image" />
+    <TextField name="headline" label="Headline" />
+    <TextField name="cta_button" label="CTA Button Text" />
+    <UrlField name="cta_link" label="CTA Link" />
   </ModuleFields>
 );
 
