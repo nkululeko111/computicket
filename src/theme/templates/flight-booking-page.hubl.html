@@ -7,5 +7,6 @@
 {% extends "./layouts/base.hubl.html" %}
 
 {% block body %}
-  {# {% module "flightBooking" path="../components/modules/FlightBookingModule" %} #}
-{% endblock body %}
+{% module "flight_booking"
+    path="@projects/computicket/theme/components/modules/FlightBooking" %}
+  {% endblock body %}
