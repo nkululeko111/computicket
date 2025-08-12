@@ -8,14 +8,7 @@ export const Component = ({ fieldValues, hublParameters = {} }) => {
 
   return (
     <div className="sampleReactModuleWrapper">
-      <div className={styles["sample-react-module"]}>
-        <h1>Sample React Module</h1>
-        <p>Field Values: {JSON.stringify(fieldValues)}</p>
-        <p>HubL Parameters: {JSON.stringify(hublParameters)}</p>
-        <p>Module style classes: {JSON.stringify(styles)}</p>
-
-        <Island module={MyButton} defaultCount={defaultCount} />
-      </div>
+      <Island module={MyButton} defaultCount={defaultCount} />
     </div>
   );
 };
