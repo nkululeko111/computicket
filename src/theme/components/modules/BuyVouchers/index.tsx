@@ -1,20 +1,15 @@
 import { Island } from "@hubspot/cms-components";
-import MyButton from "./Island/index.js?island";
-
-import styles from "./sample-react-module.module.css";
+import BuyVoucherComponent from "./Island/index.js?island"; 
+import styles from "./buyVoucher.module.css";  // your styles
 
 export const Component = ({ fieldValues, hublParameters = {} }) => {
-  const { defaultCount = 45 } = fieldValues;
+  const { heroHeading = "Digital Gift Vouchers" } = fieldValues;
 
   return (
-    <div className="sampleReactModuleWrapper">
-      <div className={styles["sample-react-module"]}>
-        <h1>Sample React Module</h1>
-        <p>Field Values: {JSON.stringify(fieldValues)}</p>
-        <p>HubL Parameters: {JSON.stringify(hublParameters)}</p>
-        <p>Module style classes: {JSON.stringify(styles)}</p>
-
-        <Island module={MyButton} defaultCount={defaultCount} />
+    <div className="buyVoucherModuleWrapper">
+      <div className={styles.buyVoucherModule}>
+        {/* You can pass any CMS-configured fields as props */}
+        <Island module={BuyVoucherComponent} heroHeading={heroHeading} />
       </div>
     </div>
   );
@@ -22,19 +17,16 @@ export const Component = ({ fieldValues, hublParameters = {} }) => {
 
 export { fields } from "./fields.js";
 
-
 export const meta = {
- "label": "BuyVouchers",
- "css_assets": [],
- "external_js": [],
- "global": true,
- "help_text": "",
- "content_types": [
-  "ANY"
- ],
- "js_assets": [],
- "other_assets": [],
- "smart_type": "NOT_SMART",
- "tags": [],
- "is_available_for_new_content": true
-}
+  label: "BuyVouchers",
+  css_assets: [],
+  external_js: [],
+  global: true,
+  help_text: "Module for buying digital gift vouchers similar to Computicket",
+  content_types: ["ANY"],
+  js_assets: [],
+  other_assets: [],
+  smart_type: "NOT_SMART",
+  tags: ["voucher", "buy", "gift"],
+  is_available_for_new_content: true,
+};

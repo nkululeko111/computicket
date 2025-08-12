@@ -3,9 +3,10 @@ import { ModuleFields, TextField } from '@hubspot/cms-components/fields';
 export const fields = (
   <ModuleFields>
     <TextField
-      label="Heading"
-      name="heading"
-      default="Hello World Test Update!"
+      label="Hero Heading"
+      name="heroHeading"
+      default="Digital Gift Vouchers"
+      helpText="Heading text shown in the hero section"
     />
   </ModuleFields>
 );
