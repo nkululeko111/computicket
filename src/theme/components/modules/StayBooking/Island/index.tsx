@@ -1,375 +1,187 @@
 import React, { useState } from "react";
-import styles from "../stay-booking.module.css"; // Adjust path if needed
+import styles from "../stay-booking.module.css"; 
 
-const CABIN_CLASSES = [
-  { value: "economy", label: "Economy", description: "Standard seating" },
-  { value: "premium_economy", label: "Premium Economy", description: "Extra legroom and amenities" },
-  { value: "business", label: "Business", description: "Priority services and comfort" },
-  { value: "first", label: "First Class", description: "Ultimate luxury and privacy" },
-];
+export default function StayBooking() {
+  // Location state
+  const [location, setLocation] = useState("");
+  
+  // Search radius state
+  const [radius, setRadius] = useState(10);
+  
+  // Date states
+  const [checkInDate, setCheckInDate] = useState("");
+  const [checkOutDate, setCheckOutDate] = useState("");
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  
+  // Guest modal state
+  const [guests, setGuests] = useState({ adults: 2, children: 0 });
+  const [showGuestModal, setShowGuestModal] = useState(false);
 
-const STOP_PREFERENCES = [
-  { value: "any", label: "Show all flights", description: "Any number of stops" },
-  { value: "one_stop", label: "1 stop max", description: "Direct or 1-stop flights" },
-  { value: "nonstop", label: "Nonstop only", description: "Direct flights only" },
-];
+  const maxGuests = 9;
+  const totalGuests = guests.adults + guests.children;
 
-export default function FlightBookingTips() {
-  // Trip type state
-  const [tripType, setTripType] = useState("oneway");
-
-  // Passenger counts state
-  const [passengers, setPassengers] = useState({ adult: 1, child: 0, infant: 0 });
-  const [showPassengerModal, setShowPassengerModal] = useState(false);
-
-  // Cabin class dropdown
-  const [cabinClass, setCabinClass] = useState(CABIN_CLASSES[0].value);
-  const [showCabinDropdown, setShowCabinDropdown] = useState(false);
-
-  // Stop preference dropdown
-  const [stopPref, setStopPref] = useState(STOP_PREFERENCES[0].value);
-  const [showStopDropdown, setShowStopDropdown] = useState(false);
-
-  // Tips accordion
-  const [activeTip, setActiveTip] = useState(null);
-
-  const maxPassengers = 8;
-  const totalPassengers = passengers.adult + passengers.child + passengers.infant;
-
-  const incrementPassenger = (type) => {
-    if (totalPassengers >= maxPassengers) return;
-    if (type === "infant" && passengers.infant >= passengers.adult) return; // infant-adult rule
-    setPassengers((prev) => ({ ...prev, [type]: prev[type] + 1 }));
+  const incrementGuest = (type) => {
+    if (totalGuests >= maxGuests) return;
+    setGuests((prev) => ({ ...prev, [type]: prev[type] + 1 }));
   };
 
-  const decrementPassenger = (type) => {
-    setPassengers((prev) => {
+  const decrementGuest = (type) => {
+    setGuests((prev) => {
       if (prev[type] <= 0) return prev;
-      if (type === "adult" && prev.adult <= 1) return prev;
-      if (type === "adult" && prev.infant > prev.adult - 1) {
-        return { ...prev, adult: prev.adult - 1, infant: prev.adult - 1 };
-      }
+      if (type === "adults" && prev.adults <= 1) return prev;
       return { ...prev, [type]: prev[type] - 1 };
     });
   };
 
-  const passengerSummary = () => {
-    const total = totalPassengers;
-    return `${total} Passenger${total !== 1 ? "s" : ""} (${passengers.adult} Adult${passengers.adult !== 1 ? "s" : ""}${passengers.child ? `, ${passengers.child} Child${passengers.child !== 1 ? "ren" : ""}` : ""}${passengers.infant ? `, ${passengers.infant} Infant${passengers.infant !== 1 ? "s" : ""}` : ""})`;
+  const guestSummary = () => {
+    return `${totalGuests} Guest${totalGuests !== 1 ? "s" : ""} (${guests.adults} Adult${guests.adults !== 1 ? "s" : ""}${guests.children ? `, ${guests.children} Child${guests.children !== 1 ? "ren" : ""}` : ""})`;
   };
-
-  const toggleTip = (index) => {
-    setActiveTip(activeTip === index ? null : index);
-  };
-
-  const tipsData = [
-    {
-      title: "Best Time to Book Flights",
-      subtitle: "Save up to 40% with smart timing",
-      content: (
-        <div className={styles.dropdownContent}>
-          <div className={styles.tipSection}>
-            <h4>Domestic Flights</h4>
-            <ul>
-              <li>Book 2-4 weeks in advance</li>
-              <li>Tuesday afternoons = lowest prices</li>
-              <li>Avoid booking on weekends</li>
-            </ul>
-          </div>
-          <div className={styles.tipSection}>
-            <h4>International Flights</h4>
-            <ul>
-              <li>Book 6-8 weeks ahead</li>
-              <li>Mid-week departures cheaper</li>
-              <li>Off-season = best deals</li>
-            </ul>
-          </div>
-          <div className={styles.proTip}>
-            <strong>Pro Tip:</strong> Compare airlines on our platform to find the best combination of price, timing, and convenience for your travel needs!
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Baggage Allowance Guide",
-      subtitle: "Avoid unexpected fees",
-      content: (
-        <div className={styles.dropdownContent}>
-          <div className={styles.tipSection}>
-            <h4>✈️ Computicket Advantage</h4>
-            <p>All tickets purchased through us include checked baggage! No surprise fees - your 20kg checked bag is already included in the price.</p>
-          </div>
-          <div className={styles.tipSection}>
-            <h4>Standard Allowances</h4>
-            <div className={styles.allowanceGrid}>
-              <div>
-                <h5>Carry-on</h5>
-                <p>7kg • 56x36x23cm</p>
-              </div>
-              <div>
-                <h5>Checked Bag</h5>
-                <p>20kg • Economy class</p>
-                <p>✓ Included with us!</p>
-              </div>
-            </div>
-          </div>
-          <div className={styles.tipSection}>
-            <h4>Prohibited Items</h4>
-            <ul>
-              <li>Liquids over 100ml (carry-on)</li>
-              <li>Sharp objects and tools</li>
-              <li>Flammable substances</li>
-            </ul>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Airport Arrival Times",
-      subtitle: "Never miss your flight",
-      content: (
-        <div className={styles.dropdownContent}>
-          <div className={styles.arrivalGrid}>
-            <div>
-              <h4>Domestic Flights</h4>
-              <p className={styles.timeHighlight}>90 min before departure</p>
-            </div>
-            <div>
-              <h4>International</h4>
-              <p className={styles.timeHighlight}>2-3 hrs before departure</p>
-            </div>
-          </div>
-          <div className={styles.tipSection}>
-            <h4>Quick Check-in Tips</h4>
-            <ul>
-              <li>Check-in online 24hrs before</li>
-              <li>Download boarding pass to phone</li>
-              <li>Use self-service kiosks</li>
-            </ul>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Travel Documents",
-      subtitle: "Required documentation",
-      content: (
-        <div className={styles.dropdownContent}>
-          <div className={styles.tipSection}>
-            <h4>Required Documents</h4>
-            <ul>
-              <li>Valid ID/Passport (check expiry)</li>
-              <li>Boarding pass (digital or printed)</li>
-              <li>Visa (international travel)</li>
-            </ul>
-          </div>
-          <div className={styles.tipSection}>
-            <h4>Important Reminder</h4>
-            <p>Keep digital and physical copies of all documents. Check passport validity - many countries require 6+ months remaining.</p>
-          </div>
-        </div>
-      ),
-    },
-  ];
 
   return (
-    <div>
+    <div className={styles.stayBookingContainer}>
       {/* Search Form */}
       <div className={styles.searchForm}>
         <h2>Find Your Perfect Stay</h2>
 
-        <div className={styles.tripType} style={{ justifyContent: 'flex-end', width: '180px' }}>
-          <button
-            type="button"
-            onClick={() => setTripType("oneway")}
-            className={`${styles.tripButton} ${tripType === "oneway" ? styles.active : ""}`}
-          >
-            One Way
-          </button>
-          <button
-            type="button"
-            onClick={() => setTripType("return")}
-            className={`${styles.tripButton} ${tripType === "return" ? styles.active : ""}`}
-          >
-            Return
-          </button>
+        {/* Location Input */}
+        <div className={styles.formGroup}>
+          <label htmlFor="destination">Where would you like to go?</label>
+          <input 
+            type="text" 
+            id="destination" 
+            placeholder="Enter destination"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+          />
         </div>
 
-        {/* Locations */}
+        {/* Search Radius */}
+        <div className={styles.formGroup}>
+          <label htmlFor="searchRadius">Search Radius: {radius} km</label>
+          <div className={styles.rangeContainer}>
+            <input
+              type="range"
+              id="searchRadius"
+              min="1"
+              max="100"
+              value={radius}
+              onChange={(e) => setRadius(parseInt(e.target.value))}
+              className={styles.rangeSlider}
+            />
+            <div className={styles.rangeLabels}>
+              <span>1 km</span>
+              <span>100 km</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Check-in/Check-out Dates */}
         <div className={styles.formRow}>
           <div className={styles.formGroup}>
-            <label htmlFor="departingFrom">Departing From</label>
-            <input type="text" id="departingFrom" placeholder="Enter city or airport" />
+            <label htmlFor="checkInDate">Check-in</label>
+            <input 
+              type="date" 
+              id="checkInDate" 
+              value={checkInDate}
+              onChange={(e) => setCheckInDate(e.target.value)}
+              placeholder="Select date"
+            />
           </div>
           <div className={styles.formGroup}>
-            <label htmlFor="travelingTo">Traveling To</label>
-            <input type="text" id="travelingTo" placeholder="Enter city or airport" />
+            <label htmlFor="checkOutDate">Check-out</label>
+            <input 
+              type="date" 
+              id="checkOutDate" 
+              value={checkOutDate}
+              onChange={(e) => setCheckOutDate(e.target.value)}
+              placeholder="Select date"
+            />
           </div>
         </div>
 
-        {/* Dates */}
-        <div className={styles.formRow}>
-          <div className={styles.formGroup}>
-            <label htmlFor="departureDate">Departure Date</label>
-            <input type="date" id="departureDate" />
+        {/* Guests */}
+        <div className={styles.formGroup}>
+          <label>Guests</label>
+          <div
+            className={styles.guestInput}
+            onClick={() => setShowGuestModal(!showGuestModal)}
+            tabIndex={0}
+            role="button"
+            aria-haspopup="dialog"
+            aria-expanded={showGuestModal}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") setShowGuestModal(!showGuestModal);
+            }}
+          >
+            {guestSummary()}
           </div>
-          <div className={`${styles.formGroup} ${tripType === "oneway" ? styles.hideReturn : ""}`}>
-            <label htmlFor="returnDate">Return Date</label>
-            <input type="date" id="returnDate" disabled={tripType === "oneway"} />
-          </div>
+          {showGuestModal && (
+            <div className={styles.guestModal} role="dialog" aria-modal="true" aria-label="Select Guests">
+              <h3>Select Guests (Max 9 total)</h3>
+              
+              <div className={styles.guestControl}>
+                <div>
+                  <h4>Adults</h4>
+                  <p>Ages 13 or above</p>
+                </div>
+                <div className={styles.countControl}>
+                  <button 
+                    type="button" 
+                    onClick={() => decrementGuest("adults")} 
+                    aria-label="Decrease adults"
+                    disabled={guests.adults <= 1}
+                  >-</button>
+                  <span>{guests.adults}</span>
+                  <button 
+                    type="button" 
+                    onClick={() => incrementGuest("adults")} 
+                    aria-label="Increase adults"
+                    disabled={totalGuests >= maxGuests}
+                  >+</button>
+                </div>
+              </div>
+              
+              <div className={styles.guestControl}>
+                <div>
+                  <h4>Children</h4>
+                  <p>Ages 0-12</p>
+                </div>
+                <div className={styles.countControl}>
+                  <button 
+                    type="button" 
+                    onClick={() => decrementGuest("children")} 
+                    aria-label="Decrease children"
+                    disabled={guests.children <= 0}
+                  >-</button>
+                  <span>{guests.children}</span>
+                  <button 
+                    type="button" 
+                    onClick={() => incrementGuest("children")} 
+                    aria-label="Increase children"
+                    disabled={totalGuests >= maxGuests}
+                  >+</button>
+                </div>
+              </div>
+              
+              <div className={styles.guestTotal}>
+                Total guests: {totalGuests} / 9
+              </div>
+              
+              <div className={styles.guestModalButtons}>
+                <button 
+                  className={styles.applyBtn} 
+                  onClick={() => setShowGuestModal(false)}
+                >
+                  Apply
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
-        {/* Passengers, Cabin Class & Stops */}
-        <div className={styles.formRow} style={{ flexWrap: "wrap" }}>
-          <div className={styles.passengerGroup} style={{ flex: "1 1 100%", marginBottom: "30px" }}>
-            <label>Passengers</label>
-            <div
-              className={styles.passengerInput}
-              onClick={() => setShowPassengerModal(!showPassengerModal)}
-              tabIndex={0}
-              role="button"
-              aria-haspopup="dialog"
-              aria-expanded={showPassengerModal}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") setShowPassengerModal(!showPassengerModal);
-              }}
-            >
-              {passengerSummary()}
-            </div>
-            {showPassengerModal && (
-              <div className={styles.passengerModal} role="dialog" aria-modal="true" aria-label="Select Passengers">
-                <div className={styles.passengerControl}>
-                  <label>Adult (Age 12+)</label>
-                  <div className="count">
-                    <button type="button" onClick={() => decrementPassenger("adult")} aria-label="Decrease adults">-</button>
-                    <span>{passengers.adult}</span>
-                    <button type="button" onClick={() => incrementPassenger("adult")} aria-label="Increase adults">+</button>
-                  </div>
-                </div>
-                <div className={styles.passengerControl}>
-                  <label>Child (Age 2-11)</label>
-                  <div className="count">
-                    <button type="button" onClick={() => decrementPassenger("child")} aria-label="Decrease children">-</button>
-                    <span>{passengers.child}</span>
-                    <button type="button" onClick={() => incrementPassenger("child")} aria-label="Increase children">+</button>
-                  </div>
-                </div>
-                <div className={styles.passengerControl}>
-                  <label>Infant (Under 2, on lap)</label>
-                  <div className="count">
-                    <button type="button" onClick={() => decrementPassenger("infant")} aria-label="Decrease infants">-</button>
-                    <span>{passengers.infant}</span>
-                    <button type="button" onClick={() => incrementPassenger("infant")} aria-label="Increase infants">+</button>
-                  </div>
-                </div>
-                <div style={{ fontSize: "0.85rem", color: "#666", marginTop: 10 }}>
-                  <p>• Each infant must be accompanied by an adult</p>
-                  <p>• Children and infants cannot travel without adults</p>
-                  <p>• Maximum 8 passengers per booking</p>
-                </div>
-                <div className={styles.passengerModalButtons}>
-                  <button className={styles.applyBtn} onClick={() => setShowPassengerModal(false)}>Apply</button>
-                  <button className={styles.closeBtn} onClick={() => setShowPassengerModal(false)}>Close</button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Cabin Class and Stop Preferences on same line */}
-          <div className={styles.cabinStopsGroup} style={{ flex: "1 1 100%" }}>
-            <div className={styles.cabinClassDropdown}>
-              <label htmlFor="cabinClass">Select Cabin Class</label>
-              <div
-                id="cabinClass"
-                className={styles.dropdownSelect}
-                onClick={() => setShowCabinDropdown(!showCabinDropdown)}
-                tabIndex={0}
-                role="button"
-                aria-haspopup="listbox"
-                aria-expanded={showCabinDropdown}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") setShowCabinDropdown(!showCabinDropdown);
-                }}
-              >
-                {CABIN_CLASSES.find((c) => c.value === cabinClass)?.label}
-              </div>
-              {showCabinDropdown && (
-                <div className={styles.dropdownOptions} role="listbox" tabIndex={-1}>
-                  {CABIN_CLASSES.map(({ value, label, description }) => (
-                    <div
-                      key={value}
-                      className={styles.dropdownOption}
-                      role="option"
-                      aria-selected={cabinClass === value}
-                      tabIndex={0}
-                      onClick={() => {
-                        setCabinClass(value);
-                        setShowCabinDropdown(false);
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ") {
-                          setCabinClass(value);
-                          setShowCabinDropdown(false);
-                        }
-                      }}
-                    >
-                      <strong>{label}</strong>
-                      <div style={{ fontSize: "0.8rem", color: "#666" }}>{description}</div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <div className={styles.stopsDropdown}>
-              <label htmlFor="stopPref">Select Stop Preference</label>
-              <div
-                id="stopPref"
-                className={styles.dropdownSelect}
-                onClick={() => setShowStopDropdown(!showStopDropdown)}
-                tabIndex={0}
-                role="button"
-                aria-haspopup="listbox"
-                aria-expanded={showStopDropdown}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") setShowStopDropdown(!showStopDropdown);
-                }}
-              >
-                {STOP_PREFERENCES.find((s) => s.value === stopPref)?.label}
-              </div>
-              {showStopDropdown && (
-                <div className={styles.dropdownOptions} role="listbox" tabIndex={-1}>
-                  {STOP_PREFERENCES.map(({ value, label, description }) => (
-                    <div
-                      key={value}
-                      className={styles.dropdownOption}
-                      role="option"
-                      aria-selected={stopPref === value}
-                      tabIndex={0}
-                      onClick={() => {
-                        setStopPref(value);
-                        setShowStopDropdown(false);
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ") {
-                          setStopPref(value);
-                          setShowStopDropdown(false);
-                        }
-                      }}
-                    >
-                      <strong>{label}</strong>
-                      <div style={{ fontSize: "0.8rem", color: "#666" }}>{description}</div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Search Flights Button */}
-        <button className={styles.searchButton}>Search Flights</button>
+        {/* Search Accommodation Button */}
+        <button className={styles.searchButton}>Search Accommodation</button>
       </div>
-      </div>
+    </div>
   );
 }
