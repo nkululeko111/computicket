@@ -8,16 +8,16 @@
 
 /* ===== Hero Section ===== */
 .heroSection {
-  background-image: url('../../../assets');
+  background-image: url('../../../assets/hote.png');
   background-size: cover;
   background-position: center;
-  height: 480px; /* reduce height slightly */
+  height: 480px; 
   display: flex;
-  align-items: flex-start; /* moved text up */
+  align-items: flex-start; 
   justify-content: center;
   text-align: center;
   position: relative;
-  padding-top: 60px; /* add padding top to push text down but leave room */
+  padding-top: 60px; 
   color: white;
 }
 
